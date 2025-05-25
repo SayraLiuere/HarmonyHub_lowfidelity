@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone UI Mockup - Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="store.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                <div class="screen-content store-page">
+                    <!-- Top Navigation Bar -->
+                    <div class="nav-bar">
+                        <button class="back-btn" onclick="window.location.href='home.html'">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h1>Store</h1>
+                        <div class="nav-right">
+                            <div class="coins-container">
+                                <i class="fas fa-coins"></i>
+                                <span id="coinsCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Store Content -->
+                    <div class="store-content">
+                        <!-- Hearts Section -->
+                        <div class="store-section">
+                            <h2>Extra Lives</h2>
+                            <div class="store-items">
+                                <div class="store-item">
+                                    <div class="item-info">
+                                        <div class="item-icon hearts">
+                                            <i class="fas fa-heart"></i>
+                                            <span>+1</span>
+                                        </div>
+                                        <div class="item-details">
+                                            <h3>Extra Heart</h3>
+                                            <p>Get one extra heart to continue learning</p>
+                                        </div>
+                                    </div>
+                                    <button class="buy-btn" onclick="purchaseItem('heart', 50)">
+                                        <i class="fas fa-coins"></i>
+                                        <span>50</span>
+                                    </button>
+                                </div>
+                                <div class="store-item">
+                                    <div class="item-info">
+                                        <div class="item-icon hearts">
+                                            <i class="fas fa-heart"></i>
+                                            <span>+5</span>
+                                        </div>
+                                        <div class="item-details">
+                                            <h3>Heart Pack</h3>
+                                            <p>Get five extra hearts at a discount</p>
+                                        </div>
+                                    </div>
+                                    <button class="buy-btn" onclick="purchaseItem('heartPack', 200)">
+                                        <i class="fas fa-coins"></i>
+                                        <span>200</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hints Section -->
+                        <div class="store-section">
+                            <h2>Hints</h2>
+                            <div class="store-items">
+                                <div class="store-item">
+                                    <div class="item-info">
+                                        <div class="item-icon hints">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <span>+1</span>
+                                        </div>
+                                        <div class="item-details">
+                                            <h3>Single Hint</h3>
+                                            <p>Get a hint for one question</p>
+                                        </div>
+                                    </div>
+                                    <button class="buy-btn" onclick="purchaseItem('hint', 30)">
+                                        <i class="fas fa-coins"></i>
+                                        <span>30</span>
+                                    </button>
+                                </div>
+                                <div class="store-item">
+                                    <div class="item-info">
+                                        <div class="item-icon hints">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <span>+5</span>
+                                        </div>
+                                        <div class="item-details">
+                                            <h3>Hint Pack</h3>
+                                            <p>Get five hints at a discount</p>
+                                        </div>
+                                    </div>
+                                    <button class="buy-btn" onclick="purchaseItem('hintPack', 120)">
+                                        <i class="fas fa-coins"></i>
+                                        <span>120</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Special Offers -->
+                        <div class="store-section">
+                            <h2>Special Offers</h2>
+                            <div class="store-items">
+                                <div class="store-item featured">
+                                    <div class="item-info">
+                                        <div class="item-icon special">
+                                            <i class="fas fa-gift"></i>
+                                        </div>
+                                        <div class="item-details">
+                                            <h3>Starter Pack</h3>
+                                            <p>5 hearts + 5 hints + 100 coins</p>
+                                            <span class="discount-badge">Best Value!</span>
+                                        </div>
+                                    </div>
+                                    <button class="buy-btn" onclick="purchaseItem('starterPack', 250)">
+                                        <i class="fas fa-coins"></i>
+                                        <span>250</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Purchase Modal -->
+                    <div class="modal" id="purchaseModal">
+                        <div class="modal-content">
+                            <h2>Purchase Complete!</h2>
+                            <div class="purchase-details">
+                                <div class="purchase-icon" id="purchaseIcon"></div>
+                                <p id="purchaseMessage"></p>
+                            </div>
+                            <button class="modal-btn" onclick="closeModal()">Great!</button>
+                        </div>
+                    </div>
+
+                    <!-- Insufficient Coins Modal -->
+                    <div class="modal" id="insufficientModal">
+                        <div class="modal-content">
+                            <h2>Not Enough Coins</h2>
+                            <div class="purchase-details">
+                                <i class="fas fa-coins insufficient"></i>
+                                <p>You need more coins to make this purchase.</p>
+                                <p>Complete lessons to earn more coins!</p>
+                            </div>
+                            <button class="modal-btn" onclick="closeModal()">Got it!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-home-indicator"></div>
+        </div>
+    </div>
+
+    <script>
+        // Load user's coins
+        document.addEventListener('DOMContentLoaded', function() {
+            const userCoins = parseInt(localStorage.getItem('userCoins') || '0');
+            document.getElementById('coinsCount').textContent = userCoins;
+        });
+
+        function purchaseItem(itemType, cost) {
+            const currentCoins = parseInt(localStorage.getItem('userCoins') || '0');
+            
+            if (currentCoins < cost) {
+                document.getElementById('insufficientModal').classList.add('show');
+                return;
+            }
+
+            // Update coins
+            const newCoins = currentCoins - cost;
+            localStorage.setItem('userCoins', newCoins.toString());
+            document.getElementById('coinsCount').textContent = newCoins;
+
+            // Handle different item types
+            let message = '';
+            let icon = '';
+            
+            switch(itemType) {
+                case 'heart':
+                    updateHearts(1);
+                    message = 'You got 1 extra heart!';
+                    icon = '<i class="fas fa-heart"></i>';
+                    break;
+                case 'heartPack':
+                    updateHearts(5);
+                    message = 'You got 5 extra hearts!';
+                    icon = '<i class="fas fa-heart"></i><span>+5</span>';
+                    break;
+                case 'hint':
+                    const currentHints = parseInt(localStorage.getItem('userHints') || '0');
+                    localStorage.setItem('userHints', (currentHints + 1).toString());
+                    message = 'You got 1 hint!';
+                    icon = '<i class="fas fa-lightbulb"></i>';
+                    break;
+                case 'hintPack':
+                    const currentHints2 = parseInt(localStorage.getItem('userHints') || '0');
+                    localStorage.setItem('userHints', (currentHints2 + 5).toString());
+                    message = 'You got 5 hints!';
+                    icon = '<i class="fas fa-lightbulb"></i><span>+5</span>';
+                    break;
+                case 'starterPack':
+                    updateHearts(5);
+                    const currentHints3 = parseInt(localStorage.getItem('userHints') || '0');
+                    localStorage.setItem('userHints', (currentHints3 + 5).toString());
+                    updateCoins(100);
+                    message = 'You got the Starter Pack! (5 hearts + 5 hints + 100 coins)';
+                    icon = '<i class="fas fa-gift"></i>';
+                    break;
+            }
+
+            // Show purchase modal
+            document.getElementById('purchaseIcon').innerHTML = icon;
+            document.getElementById('purchaseMessage').textContent = message;
+            document.getElementById('purchaseModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('purchaseModal').classList.remove('show');
+            document.getElementById('insufficientModal').classList.remove('show');
+        }
+
+        function updateHearts(amount) {
+            const currentHearts = parseInt(localStorage.getItem('userHearts') || '5');
+            const newHearts = Math.max(0, Math.min(5, currentHearts + amount));
+            localStorage.setItem('userHearts', newHearts.toString());
+            return newHearts;
+        }
+
+        function updateCoins(amount) {
+            const currentCoins = parseInt(localStorage.getItem('userCoins') || '0');
+            const newCoins = Math.max(0, currentCoins + amount);
+            localStorage.setItem('userCoins', newCoins.toString());
+            document.getElementById('coinsCount').textContent = newCoins;
+            return newCoins;
+        }
+    </script>
+</body>
+</html> 

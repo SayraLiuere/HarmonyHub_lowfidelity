@@ -16,23 +16,32 @@
                 <div class="screen-content home-page">
                     <!-- Top Navigation Bar -->
                     <div class="nav-bar">
-                        <h1>HarmonyHub Malaysia</h1>
-                    </div>
-
-                    <!-- Level Progress -->
-                    <div class="level-progress">
-                        <div class="level-info">
-                            <div class="level-badge">
-                                <span id="userLevel">1</span>
-                            </div>
-                            <div class="xp-info">
-                                <div class="xp-bar">
-                                    <div class="xp-fill" id="xpProgress"></div>
+                        <div class="nav-left">
+                            <div class="stats-container">
+                                <div class="hearts-container">
+                                    <i class="fas fa-heart"></i>
+                                    <span id="heartsCount">5</span>
                                 </div>
+                                <div class="coins-container" onclick="window.location.href='store.html'">
+                                    <i class="fas fa-coins"></i>
+                                    <span id="coinsCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-center">
+                            <div class="title-section">
+                                <h1>HarmonyHub Malaysia</h1>
+                                <div class="level-badge">Lvl <span id="userLevel">1</span></div>
+                            </div>
+                            <div class="xp-bar">
+                                <div class="xp-fill" id="xpProgress"></div>
                                 <div class="xp-text">
                                     <span id="currentXP">0</span>/<span id="nextLevelXP">10000</span> XP
                                 </div>
                             </div>
+                        </div>
+                        <div class="nav-right">
+                            <div style="width: 60px;"></div>
                         </div>
                     </div>
 
@@ -154,8 +163,8 @@
                                 <i class="fas fa-trophy"></i>
                                 <span>Leaderboard</span>
                             </button>
-                            <button class="sidebar-btn">
-                                <i class="fas fa-store"></i>
+                            <button class="sidebar-btn" onclick="window.location.href='store.html'">
+                                <i class="fas fa-shopping-cart"></i>
                                 <span>Store</span>
                             </button>
                         </div>
@@ -198,6 +207,25 @@
 
         // Initialize all chapters to be closed
         document.addEventListener('DOMContentLoaded', function() {
+            // Load existing progress
+            const userLevel = parseInt(localStorage.getItem('userLevel') || '1');
+            const userXP = parseInt(localStorage.getItem('userXP') || '0');
+            const xpForNextLevel = userLevel * 10000;
+            const xpProgress = (userXP / xpForNextLevel) * 100;
+
+            // Load coins and hearts
+            const userCoins = parseInt(localStorage.getItem('userCoins') || '0');
+            const userHearts = parseInt(localStorage.getItem('userHearts') || '5');
+
+            // Update displays
+            document.getElementById('userLevel').textContent = userLevel;
+            document.getElementById('currentXP').textContent = userXP;
+            document.getElementById('nextLevelXP').textContent = xpForNextLevel;
+            document.getElementById('xpProgress').style.width = `${xpProgress}%`;
+            document.getElementById('coinsCount').textContent = userCoins;
+            document.getElementById('heartsCount').textContent = userHearts;
+
+            // Initialize chapters
             const chapterContents = document.querySelectorAll('.chapter-content');
             const chevrons = document.querySelectorAll('.fa-chevron-down');
             
@@ -208,18 +236,25 @@
             chevrons.forEach(chevron => {
                 chevron.style.transform = 'rotate(-90deg)';
             });
-
-            // Load and display user progress
-            const userLevel = parseInt(localStorage.getItem('userLevel') || '1');
-            const userXP = parseInt(localStorage.getItem('userXP') || '0');
-            const xpForNextLevel = userLevel * 10000;
-            const xpProgress = (userXP / xpForNextLevel) * 100;
-
-            document.getElementById('userLevel').textContent = userLevel;
-            document.getElementById('currentXP').textContent = userXP;
-            document.getElementById('nextLevelXP').textContent = xpForNextLevel;
-            document.getElementById('xpProgress').style.width = `${xpProgress}%`;
         });
+
+        // Function to update hearts (will be used when taking tests)
+        function updateHearts(amount) {
+            const currentHearts = parseInt(localStorage.getItem('userHearts') || '5');
+            const newHearts = Math.max(0, Math.min(5, currentHearts + amount));
+            localStorage.setItem('userHearts', newHearts.toString());
+            document.getElementById('heartsCount').textContent = newHearts;
+            return newHearts;
+        }
+
+        // Function to update coins
+        function updateCoins(amount) {
+            const currentCoins = parseInt(localStorage.getItem('userCoins') || '0');
+            const newCoins = Math.max(0, currentCoins + amount);
+            localStorage.setItem('userCoins', newCoins.toString());
+            document.getElementById('coinsCount').textContent = newCoins;
+            return newCoins;
+        }
     </script>
 </body>
 </html> 
