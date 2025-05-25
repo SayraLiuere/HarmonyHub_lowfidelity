@@ -361,25 +361,10 @@
     padding: 8px;
     width: 100%;
     color: #000;
-    transition: all 0.2s ease;
-}
-
-.sidebar-btn:hover {
-    background-color: #f0f0f0;
-    transform: translateX(-2px);
-}
-
-.sidebar-btn:hover i {
-    color: #4CAF50;
-}
-
-.sidebar-btn:hover span {
-    color: #4CAF50;
 }
 
 .sidebar-btn i {
     font-size: 20px;
-    transition: color 0.2s ease;
 }
 
 .sidebar-btn span {
@@ -388,13 +373,6 @@
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    transition: color 0.2s ease;
-}
-
-.settings-btn {
-    margin-top: auto;
-    border-top: 2px solid #000;
-    padding-top: 20px;
 }
 
 .sidebar-btn.active {
@@ -405,6 +383,12 @@
 .sidebar-btn.active i,
 .sidebar-btn.active span {
     color: #4CAF50;
+}
+
+.settings-btn {
+    margin-top: auto;
+    border-top: 2px solid #000;
+    padding-top: 20px;
 }
 
 /* Notification Toast */

@@ -260,4 +260,65 @@
 /* When sidebar is open, prevent body scroll */
 body.sidebar-open {
     overflow: hidden;
+}
+
+/* Edit Mode Styles */
+.name-container {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #fff;
+}
+
+#nameInput {
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
+}
+
+#bioInput {
+    width: 100%;
+    resize: none;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.save-btn, .cancel-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #4CAF50;
+    color: #fff;
+}
+
+.cancel-btn {
+    background: #fff;
+    color: #000;
+}
+
+.edit-btn.editing {
+    background: #4CAF50;
+    color: #fff;
 } 

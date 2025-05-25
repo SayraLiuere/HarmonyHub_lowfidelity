@@ -38,16 +38,36 @@
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="profile-info">
-                                <h2>John Doe</h2>
+                                <div class="name-container">
+                                    <h2 id="userName">John Doe</h2>
+                                    <input type="text" id="nameInput" class="edit-input" style="display: none;" maxlength="30">
+                                </div>
                                 <div class="info-details">
-                                    <span class="info-item">
+                                    <div class="info-item">
                                         <i class="fas fa-birthday-cake"></i>
-                                        22 years old
-                                    </span>
-                                    <span class="info-item">
+                                        <div class="info-container">
+                                            <span id="userAge">22</span> years old
+                                            <input type="number" id="ageInput" class="edit-input" style="display: none;" min="13" max="100" placeholder="Enter age">
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
                                         <i class="fas fa-flag"></i>
-                                        Malaysia
-                                    </span>
+                                        <div class="info-container">
+                                            <span id="userNationality">Malaysia</span>
+                                            <select id="nationalityInput" class="edit-input" style="display: none;">
+                                                <option value="Malaysia">Malaysia</option>
+                                                <option value="Singapore">Singapore</option>
+                                                <option value="Indonesia">Indonesia</option>
+                                                <option value="Thailand">Thailand</option>
+                                                <option value="Vietnam">Vietnam</option>
+                                                <option value="Philippines">Philippines</option>
+                                                <option value="Brunei">Brunei</option>
+                                                <option value="Cambodia">Cambodia</option>
+                                                <option value="Myanmar">Myanmar</option>
+                                                <option value="Laos">Laos</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +75,16 @@
                         <!-- Bio Section -->
                         <div class="bio-section">
                             <h3>About Me</h3>
-                            <p>UI/UX Design student passionate about creating intuitive and engaging user experiences. Currently learning the fundamentals of design and prototyping.</p>
+                            <div class="bio-container">
+                                <p id="userBio">UI/UX Design student passionate about creating intuitive and engaging user experiences. Currently learning the fundamentals of design and prototyping.</p>
+                                <textarea id="bioInput" class="edit-input" style="display: none;" maxlength="200" rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Edit Mode Buttons -->
+                        <div class="edit-buttons" style="display: none;">
+                            <button class="save-btn" onclick="saveProfile()">Save</button>
+                            <button class="cancel-btn" onclick="cancelEdit()">Cancel</button>
                         </div>
 
                         <!-- Stats Section -->
@@ -124,6 +153,135 @@
             document.querySelector('.sidebar').classList.toggle('active');
             document.querySelector('.sidebar-overlay').classList.toggle('active');
             document.body.classList.toggle('sidebar-open');
+        }
+
+        // Load profile data
+        document.addEventListener('DOMContentLoaded', function() {
+            const userName = localStorage.getItem('userName') || 'John Doe';
+            const userBio = localStorage.getItem('userBio') || 'UI/UX Design student passionate about creating intuitive and engaging user experiences. Currently learning the fundamentals of design and prototyping.';
+            const userAge = localStorage.getItem('userAge') || '22';
+            const userNationality = localStorage.getItem('userNationality') || 'Malaysia';
+            
+            document.getElementById('userName').textContent = userName;
+            document.getElementById('userBio').textContent = userBio;
+            document.getElementById('userAge').textContent = userAge;
+            document.getElementById('userNationality').textContent = userNationality;
+        });
+
+        // Toggle edit mode
+        document.querySelector('.edit-btn').addEventListener('click', function() {
+            const nameInput = document.getElementById('nameInput');
+            const bioInput = document.getElementById('bioInput');
+            const ageInput = document.getElementById('ageInput');
+            const nationalityInput = document.getElementById('nationalityInput');
+            const userName = document.getElementById('userName');
+            const userBio = document.getElementById('userBio');
+            const userAge = document.getElementById('userAge');
+            const userNationality = document.getElementById('userNationality');
+            const editButtons = document.querySelector('.edit-buttons');
+
+            // Show edit inputs
+            nameInput.value = userName.textContent;
+            bioInput.value = userBio.textContent;
+            ageInput.value = userAge.textContent;
+            nationalityInput.value = userNationality.textContent;
+            
+            nameInput.style.display = 'block';
+            bioInput.style.display = 'block';
+            ageInput.style.display = 'block';
+            nationalityInput.style.display = 'block';
+            
+            userName.style.display = 'none';
+            userBio.style.display = 'none';
+            userAge.style.display = 'none';
+            userNationality.style.display = 'none';
+            
+            editButtons.style.display = 'flex';
+
+            // Change edit button to save icon
+            this.innerHTML = '<i class="fas fa-check"></i>';
+            this.classList.add('editing');
+        });
+
+        // Save profile changes
+        function saveProfile() {
+            const nameInput = document.getElementById('nameInput');
+            const bioInput = document.getElementById('bioInput');
+            const ageInput = document.getElementById('ageInput');
+            const nationalityInput = document.getElementById('nationalityInput');
+            const userName = document.getElementById('userName');
+            const userBio = document.getElementById('userBio');
+            const userAge = document.getElementById('userAge');
+            const userNationality = document.getElementById('userNationality');
+            const editBtn = document.querySelector('.edit-btn');
+            const editButtons = document.querySelector('.edit-buttons');
+
+            // Validate age
+            const age = parseInt(ageInput.value);
+            if (age < 13 || age > 100) {
+                alert('Please enter a valid age between 13 and 100');
+                return;
+            }
+
+            // Save to localStorage
+            localStorage.setItem('userName', nameInput.value);
+            localStorage.setItem('userBio', bioInput.value);
+            localStorage.setItem('userAge', ageInput.value);
+            localStorage.setItem('userNationality', nationalityInput.value);
+
+            // Update display
+            userName.textContent = nameInput.value;
+            userBio.textContent = bioInput.value;
+            userAge.textContent = ageInput.value;
+            userNationality.textContent = nationalityInput.value;
+
+            // Hide edit inputs
+            nameInput.style.display = 'none';
+            bioInput.style.display = 'none';
+            ageInput.style.display = 'none';
+            nationalityInput.style.display = 'none';
+            
+            userName.style.display = 'block';
+            userBio.style.display = 'block';
+            userAge.style.display = 'inline';
+            userNationality.style.display = 'inline';
+            
+            editButtons.style.display = 'none';
+
+            // Reset edit button
+            editBtn.innerHTML = '<i class="fas fa-pen"></i>';
+            editBtn.classList.remove('editing');
+        }
+
+        // Cancel edit mode
+        function cancelEdit() {
+            const nameInput = document.getElementById('nameInput');
+            const bioInput = document.getElementById('bioInput');
+            const ageInput = document.getElementById('ageInput');
+            const nationalityInput = document.getElementById('nationalityInput');
+            const userName = document.getElementById('userName');
+            const userBio = document.getElementById('userBio');
+            const userAge = document.getElementById('userAge');
+            const userNationality = document.getElementById('userNationality');
+            const editBtn = document.querySelector('.edit-btn');
+            const editButtons = document.querySelector('.edit-buttons');
+
+            // Hide edit inputs
+            nameInput.style.display = 'none';
+            bioInput.style.display = 'none';
+            ageInput.style.display = 'none';
+            nationalityInput.style.display = 'none';
+            
+            userName.style.display = 'block';
+            userBio.style.display = 'block';
+            userAge.style.display = 'inline';
+            userNationality.style.display = 'inline';
+            
+            editButtons.style.display = 'none';
+
+            // Reset edit button
+            editBtn.innerHTML = '<i class="fas fa-pen"></i>';
+            editBtn.classList.remove('editing');
         }
     </script>
 </body>
