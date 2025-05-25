@@ -6,6 +6,6 @@ first add all files
 1.1
 added settings and fix some buggs
 
-1.2 (haven't pushed but ready)
+1.2
 added lives, exp, and coins
 added store
