@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone UI Mockup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                <!-- Login Form -->
+                <div class="login-container">
+                    <div class="profile-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="login-header">
+                        <h1>Welcome Back</h1>
+                        <p>Please login to your account</p>
+                    </div>
+                    <form id="loginForm" class="login-form">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="login-btn">Login</button>
+                        </div>
+                        <div class="form-footer">
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="phone-home-indicator"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (username && password) {
+                // Redirect to home page
+                window.location.href = 'home.html';
+            }
+        });
+    </script>
+</body>
+</html> 

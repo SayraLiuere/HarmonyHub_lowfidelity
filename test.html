@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone UI Mockup - Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                <div class="screen-content test-page">
+                    <!-- Top Navigation Bar -->
+                    <div class="nav-bar">
+                        <button class="back-btn" onclick="window.location.href='home.html'">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h1>Chapter 1: Understanding Diversity</h1>
+                        <div class="nav-buttons">
+                            <button class="menu-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Test Content -->
+                    <div class="test-content">
+                        <div class="progress-bar">
+                            <div class="progress" id="testProgress"></div>
+                        </div>
+                        
+                        <div class="question-container" id="questionContainer">
+                            <!-- Questions will be inserted here by JavaScript -->
+                        </div>
+
+                        <div class="answer-buttons">
+                            <button class="answer-btn true-btn" onclick="checkAnswer(true)">
+                                <i class="fas fa-check"></i>
+                                True
+                            </button>
+                            <button class="answer-btn false-btn" onclick="checkAnswer(false)">
+                                <i class="fas fa-times"></i>
+                                False
+                            </button>
+                        </div>
+
+                        <!-- Results Modal -->
+                        <div class="modal" id="resultsModal">
+                            <div class="modal-content">
+                                <h2>Test Complete!</h2>
+                                <div class="score-display">
+                                    <div class="score-circle">
+                                        <span id="scorePercentage">0%</span>
+                                    </div>
+                                    <p>You got <span id="correctAnswers">0</span> out of <span id="totalQuestions">5</span> correct!</p>
+                                    <div class="xp-gained">
+                                        <i class="fas fa-star"></i>
+                                        <span>+<span id="xpAmount">0</span> XP</span>
+                                    </div>
+                                </div>
+                                <div class="modal-buttons">
+                                    <button class="retry-btn" onclick="retryTest()">
+                                        <i class="fas fa-redo"></i>
+                                        Try Again
+                                    </button>
+                                    <button class="home-btn" onclick="saveProgressAndGoHome()">
+                                        <i class="fas fa-home"></i>
+                                        Back to Home
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overlay for sidebar -->
+                    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+                    <!-- Right Sidebar -->
+                    <div class="sidebar">
+                        <div class="sidebar-header">
+                            <h2>Menu</h2>
+                            <button class="close-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar-icons">
+                            <button class="sidebar-btn" onclick="window.location.href='profile.html'">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='notifications.html'">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='calendar.html'">
+                                <i class="fas fa-calendar"></i>
+                                <span>Calendar</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='leaderboard.html'">
+                                <i class="fas fa-trophy"></i>
+                                <span>Leaderboard</span>
+                            </button>
+                            <button class="sidebar-btn">
+                                <i class="fas fa-store"></i>
+                                <span>Store</span>
+                            </button>
+                        </div>
+                        <button class="sidebar-btn settings-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-home-indicator"></div>
+        </div>
+    </div>
+
+    <script>
+        // Test questions
+        const questions = [
+            {
+                question: "Malaysia is home to three main ethnic groups: Malays, Chinese, and Indians.",
+                answer: true
+            },
+            {
+                question: "It's okay to make jokes about someone's cultural background as long as they don't mind.",
+                answer: false
+            },
+            {
+                question: "Learning about different cultures helps promote understanding and harmony.",
+                answer: true
+            },
+            {
+                question: "Cultural diversity is a weakness for a country's development.",
+                answer: false
+            },
+            {
+                question: "Celebrating different cultural festivals together strengthens national unity.",
+                answer: true
+            }
+        ];
+
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        const XP_PER_CORRECT = 100; // XP gained per correct answer
+
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        function showQuestion() {
+            const questionContainer = document.getElementById('questionContainer');
+            const progress = document.getElementById('testProgress');
+            
+            if (currentQuestion < questions.length) {
+                const question = questions[currentQuestion];
+                questionContainer.innerHTML = `
+                    <div class="question">
+                        <h2>Question ${currentQuestion + 1} of ${questions.length}</h2>
+                        <p>${question.question}</p>
+                    </div>
+                `;
+                progress.style.width = `${((currentQuestion) / questions.length) * 100}%`;
+            } else {
+                showResults();
+            }
+        }
+
+        function checkAnswer(userAnswer) {
+            const question = questions[currentQuestion];
+            const buttons = document.querySelectorAll('.answer-btn');
+            
+            // Disable buttons during feedback
+            buttons.forEach(btn => btn.disabled = true);
+            
+            if (userAnswer === question.answer) {
+                correctAnswers++;
+                buttons[userAnswer ? 0 : 1].classList.add('correct');
+            } else {
+                buttons[userAnswer ? 0 : 1].classList.add('incorrect');
+                buttons[question.answer ? 0 : 1].classList.add('correct');
+            }
+
+            // Move to next question after a short delay
+            setTimeout(() => {
+                buttons.forEach(btn => {
+                    btn.disabled = false;
+                    btn.classList.remove('correct', 'incorrect');
+                });
+                currentQuestion++;
+                showQuestion();
+            }, 1000);
+        }
+
+        function showResults() {
+            const modal = document.getElementById('resultsModal');
+            const scorePercentage = document.getElementById('scorePercentage');
+            const correctAnswersSpan = document.getElementById('correctAnswers');
+            const totalQuestionsSpan = document.getElementById('totalQuestions');
+            const xpAmount = document.getElementById('xpAmount');
+            
+            const percentage = Math.round((correctAnswers / questions.length) * 100);
+            const xpGained = correctAnswers * XP_PER_CORRECT;
+            
+            scorePercentage.textContent = `${percentage}%`;
+            correctAnswersSpan.textContent = correctAnswers;
+            totalQuestionsSpan.textContent = questions.length;
+            xpAmount.textContent = xpGained;
+            
+            // Save progress to localStorage
+            const currentXP = parseInt(localStorage.getItem('userXP') || '0');
+            const currentLevel = parseInt(localStorage.getItem('userLevel') || '1');
+            const newXP = currentXP + xpGained;
+            
+            // Check for level up
+            const xpForNextLevel = currentLevel * 10000;
+            if (newXP >= xpForNextLevel) {
+                localStorage.setItem('userLevel', (currentLevel + 1).toString());
+            }
+            
+            localStorage.setItem('userXP', newXP.toString());
+            
+            modal.classList.add('show');
+        }
+
+        function retryTest() {
+            currentQuestion = 0;
+            correctAnswers = 0;
+            document.getElementById('resultsModal').classList.remove('show');
+            showQuestion();
+        }
+
+        function saveProgressAndGoHome() {
+            window.location.href = 'home.html';
+        }
+
+        // Initialize the test
+        document.addEventListener('DOMContentLoaded', showQuestion);
+    </script>
+</body>
+</html> 

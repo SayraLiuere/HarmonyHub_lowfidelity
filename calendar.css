@@ -1,0 +1,319 @@
+/* Calendar Page Specific Styles */
+.calendar-page {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #000;
+}
+
+.nav-bar h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.back-btn, .menu-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Streak Info */
+.streak-info {
+    padding: 20px;
+    border-bottom: 2px solid #000;
+    background: #fff;
+}
+
+.streak-count {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.streak-count i {
+    color: #FF6B00;
+    font-size: 24px;
+}
+
+.streak-count span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.streak-goal {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.goal-progress {
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #FF6B00;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.streak-goal span {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Month Selector */
+.month-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 2px solid #000;
+}
+
+.month-selector h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.month-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    padding: 5px;
+    background: #f0f0f0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px 0;
+    background: #fff;
+    border-bottom: 1px solid #000;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    background: #fff;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 2px;
+    min-height: 35px;
+}
+
+.calendar-day.other-month {
+    color: #999;
+    background: #f9f9f9;
+}
+
+.calendar-day.today {
+    background: #f0f0f0;
+    border: 1px solid #000;
+}
+
+.day-number {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.day-activity {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    margin-top: 1px;
+}
+
+.day-activity.completed {
+    background: #4CAF50;
+    color: #fff;
+}
+
+.day-activity.current {
+    background: #2196F3;
+    color: #fff;
+}
+
+.day-activity.streak {
+    background: #FF6B00;
+    color: #fff;
+}
+
+/* Activity Legend */
+.activity-legend {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    border-top: 2px solid #000;
+    background: #fff;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.legend-icon.completed {
+    background: #4CAF50;
+    color: #fff;
+}
+
+.legend-icon.current {
+    background: #2196F3;
+    color: #fff;
+}
+
+.legend-icon.streak {
+    background: #FF6B00;
+    color: #fff;
+}
+
+.legend-item span {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: absolute;
+    right: -250px;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background: #fff;
+    border-left: 2px solid #000;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    height: 100%;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    height: 100%;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #000;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sidebar-icons {
+    padding: 20px 0;
+}
+
+.sidebar-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 15px;
+}
+
+.sidebar-btn i {
+    font-size: 20px;
+    width: 24px;
+}
+
+.sidebar-btn span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.sidebar-btn:hover {
+    background: #f0f0f0;
+}
+
+.sidebar-btn.active {
+    background: #f0f0f0;
+}
+
+.settings-btn {
+    border-top: 2px solid #000;
+    margin-top: auto;
+} 

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone UI Mockup - Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="leaderboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                <div class="screen-content leaderboard-page">
+                    <!-- Top Navigation Bar -->
+                    <div class="nav-bar">
+                        <button class="back-btn" onclick="window.location.href='home.html'">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h1>Leaderboard</h1>
+                        <div class="nav-buttons">
+                            <button class="menu-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Time Period Selector -->
+                    <div class="time-selector">
+                        <button class="time-btn active">This Week</button>
+                        <button class="time-btn">This Month</button>
+                        <button class="time-btn">All Time</button>
+                    </div>
+
+                    <!-- Podium Section -->
+                    <div class="podium-section">
+                        <!-- Second Place -->
+                        <div class="podium-item second">
+                            <div class="crown">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="podium-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="podium-info">
+                                <h3>Sarah Lee</h3>
+                                <p>2,450 XP</p>
+                            </div>
+                            <div class="podium-rank">2</div>
+                        </div>
+
+                        <!-- First Place -->
+                        <div class="podium-item first">
+                            <div class="crown">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="podium-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="podium-info">
+                                <h3>John Doe</h3>
+                                <p>3,120 XP</p>
+                            </div>
+                            <div class="podium-rank">1</div>
+                        </div>
+
+                        <!-- Third Place -->
+                        <div class="podium-item third">
+                            <div class="crown">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="podium-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="podium-info">
+                                <h3>Mike Chen</h3>
+                                <p>2,100 XP</p>
+                            </div>
+                            <div class="podium-rank">3</div>
+                        </div>
+                    </div>
+
+                    <!-- Rest of Leaderboard -->
+                    <div class="leaderboard-list">
+                        <!-- Your Position -->
+                        <div class="leaderboard-item your-rank">
+                            <div class="rank">#4</div>
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h3>You</h3>
+                                <p>1,850 XP</p>
+                            </div>
+                        </div>
+
+                        <!-- Other Users -->
+                        <div class="leaderboard-item">
+                            <div class="rank">#5</div>
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h3>Emma Wilson</h3>
+                                <p>1,750 XP</p>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <div class="rank">#6</div>
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h3>Alex Kim</h3>
+                                <p>1,650 XP</p>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <div class="rank">#7</div>
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h3>Lisa Park</h3>
+                                <p>1,550 XP</p>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <div class="rank">#8</div>
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h3>Tom Brown</h3>
+                                <p>1,450 XP</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overlay for sidebar -->
+                    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+                    <!-- Right Sidebar -->
+                    <div class="sidebar">
+                        <div class="sidebar-header">
+                            <h2>Menu</h2>
+                            <button class="close-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar-icons">
+                            <button class="sidebar-btn" onclick="window.location.href='profile.html'">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='notifications.html'">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                            </button>
+                            <button class="sidebar-btn">
+                                <i class="fas fa-calendar"></i>
+                                <span>Calendar</span>
+                            </button>
+                            <button class="sidebar-btn active">
+                                <i class="fas fa-trophy"></i>
+                                <span>Leaderboard</span>
+                            </button>
+                            <button class="sidebar-btn">
+                                <i class="fas fa-store"></i>
+                                <span>Store</span>
+                            </button>
+                        </div>
+                        <button class="sidebar-btn settings-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-home-indicator"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        // Time period selector
+        document.querySelectorAll('.time-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html> 

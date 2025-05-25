@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone UI Mockup - Notifications</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="notifications.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                <div class="screen-content notifications-page">
+                    <!-- Top Navigation Bar -->
+                    <div class="nav-bar">
+                        <button class="back-btn" onclick="window.location.href='home.html'">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h1>Notifications</h1>
+                        <div class="nav-buttons">
+                            <button class="menu-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Test Notification Button -->
+                    <div class="test-notification">
+                        <button class="test-btn" onclick="showTestNotification()">
+                            Test Pop Up!
+                        </button>
+                    </div>
+
+                    <!-- Notifications List -->
+                    <div class="notifications-list">
+                        <!-- Example notifications -->
+                        <div class="notification-item unread">
+                            <div class="notification-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h3>Achievement Unlocked!</h3>
+                                <p>You've completed 5 chapters in a row!</p>
+                                <span class="notification-time">2 hours ago</span>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h3>Study Reminder</h3>
+                                <p>Your next study session starts in 30 minutes</p>
+                                <span class="notification-time">Yesterday</span>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h3>New Badge Earned</h3>
+                                <p>Congratulations! You've earned the "Early Bird" badge</p>
+                                <span class="notification-time">2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overlay for sidebar -->
+                    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+                    <!-- Right Sidebar -->
+                    <div class="sidebar">
+                        <div class="sidebar-header">
+                            <h2>Menu</h2>
+                            <button class="close-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar-icons">
+                            <button class="sidebar-btn" onclick="window.location.href='profile.html'">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </button>
+                            <button class="sidebar-btn active">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                            </button>
+                            <button class="sidebar-btn">
+                                <i class="fas fa-calendar"></i>
+                                <span>Calendar</span>
+                            </button>
+                            <button class="sidebar-btn">
+                                <i class="fas fa-trophy"></i>
+                                <span>Leaderboard</span>
+                            </button>
+                            <button class="sidebar-btn">
+                                <i class="fas fa-store"></i>
+                                <span>Store</span>
+                            </button>
+                        </div>
+                        <button class="sidebar-btn settings-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-home-indicator"></div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="notification-toast" id="notificationToast">
+        <div class="toast-content">
+            <i class="fas fa-bell"></i>
+            <div class="toast-message">
+                <h4>New Message!</h4>
+                <p>You have a new notification</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        function showTestNotification() {
+            const toast = document.getElementById('notificationToast');
+            toast.classList.add('show');
+            
+            // Play notification sound
+            const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+            audio.play();
+
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

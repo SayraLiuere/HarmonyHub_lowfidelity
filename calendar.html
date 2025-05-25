@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone UI Mockup - Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="calendar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                <div class="screen-content calendar-page">
+                    <!-- Top Navigation Bar -->
+                    <div class="nav-bar">
+                        <button class="back-btn" onclick="window.location.href='home.html'">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h1>Calendar</h1>
+                        <div class="nav-buttons">
+                            <button class="menu-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Streak Info -->
+                    <div class="streak-info">
+                        <div class="streak-count">
+                            <i class="fas fa-fire"></i>
+                            <span>7 Day Streak!</span>
+                        </div>
+                        <div class="streak-goal">
+                            <div class="goal-progress">
+                                <div class="progress-bar" style="width: 70%;"></div>
+                            </div>
+                            <span>Goal: 10 days</span>
+                        </div>
+                    </div>
+
+                    <!-- Month Selector -->
+                    <div class="month-selector">
+                        <button class="month-btn" onclick="previousMonth()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h2>March 2024</h2>
+                        <button class="month-btn" onclick="nextMonth()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Calendar Grid -->
+                    <div class="calendar-grid">
+                        <!-- Weekday Headers -->
+                        <div class="weekday">Sun</div>
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+
+                        <!-- Calendar Days -->
+                        <!-- Previous Month Days -->
+                        <div class="calendar-day other-month">25</div>
+                        <div class="calendar-day other-month">26</div>
+                        <div class="calendar-day other-month">27</div>
+                        <div class="calendar-day other-month">28</div>
+                        <div class="calendar-day other-month">29</div>
+
+                        <!-- Current Month Days -->
+                        <div class="calendar-day">
+                            <span class="day-number">1</span>
+                            <div class="day-activity completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">2</span>
+                            <div class="day-activity completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">3</span>
+                            <div class="day-activity completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">4</span>
+                            <div class="day-activity completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">5</span>
+                            <div class="day-activity completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">6</span>
+                            <div class="day-activity completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">7</span>
+                            <div class="day-activity completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <!-- Today -->
+                        <div class="calendar-day today">
+                            <span class="day-number">8</span>
+                            <div class="day-activity current">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                        <!-- Future Days -->
+                        <div class="calendar-day">
+                            <span class="day-number">9</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">10</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">11</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">12</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">13</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">14</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">15</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">16</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">17</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">18</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">19</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">20</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">21</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">22</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">23</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">24</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">25</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">26</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">27</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">28</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">29</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">30</span>
+                        </div>
+                        <div class="calendar-day">
+                            <span class="day-number">31</span>
+                        </div>
+                        <!-- Next Month Days -->
+                        <div class="calendar-day other-month">1</div>
+                        <div class="calendar-day other-month">2</div>
+                        <div class="calendar-day other-month">3</div>
+                        <div class="calendar-day other-month">4</div>
+                        <div class="calendar-day other-month">5</div>
+                        <div class="calendar-day other-month">6</div>
+                    </div>
+
+                    <!-- Activity Legend -->
+                    <div class="activity-legend">
+                        <div class="legend-item">
+                            <div class="legend-icon completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span>Completed</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-icon current">
+                                <i class="fas fa-spinner"></i>
+                            </div>
+                            <span>Today</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-icon streak">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <span>Streak Day</span>
+                        </div>
+                    </div>
+
+                    <!-- Overlay for sidebar -->
+                    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+                    <!-- Right Sidebar -->
+                    <div class="sidebar">
+                        <div class="sidebar-header">
+                            <h2>Menu</h2>
+                            <button class="close-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar-icons">
+                            <button class="sidebar-btn" onclick="window.location.href='profile.html'">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='notifications.html'">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                            </button>
+                            <button class="sidebar-btn active">
+                                <i class="fas fa-calendar"></i>
+                                <span>Calendar</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='leaderboard.html'">
+                                <i class="fas fa-trophy"></i>
+                                <span>Leaderboard</span>
+                            </button>
+                            <button class="sidebar-btn">
+                                <i class="fas fa-store"></i>
+                                <span>Store</span>
+                            </button>
+                        </div>
+                        <button class="sidebar-btn settings-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-home-indicator"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        function previousMonth() {
+            // Add month navigation logic
+            console.log('Previous month');
+        }
+
+        function nextMonth() {
+            // Add month navigation logic
+            console.log('Next month');
+        }
+    </script>
+</body>
+</html> 
