@@ -9,3 +9,6 @@ added settings and fix some buggs
 1.2
 added lives, exp, and coins
 added store
+
+1.3
+users now can change their name, age, nationality and bio.
