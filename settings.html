@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone UI Mockup - Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                <div class="screen-content settings-page">
+                    <!-- Top Navigation Bar -->
+                    <div class="nav-bar">
+                        <button class="back-btn" onclick="window.location.href='home.html'">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h1>Settings</h1>
+                        <div class="nav-buttons">
+                            <button class="menu-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="settings-content">
+                        <!-- Account Settings -->
+                        <div class="settings-section">
+                            <h2>Account</h2>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-user"></i>
+                                    <span>Profile Settings</span>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Privacy Settings</span>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        <!-- App Settings -->
+                        <div class="settings-section">
+                            <h2>App Settings</h2>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-font"></i>
+                                    <span>Text Size</span>
+                                </div>
+                                <div class="font-size-controls">
+                                    <button class="size-btn" onclick="changeFontSize('decrease')">A-</button>
+                                    <button class="size-btn" onclick="changeFontSize('increase')">A+</button>
+                                </div>
+                            </div>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-bell"></i>
+                                    <span>Notifications</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="notificationsToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-volume-up"></i>
+                                    <span>Sound Effects</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="soundToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Theme Settings -->
+                        <div class="settings-section">
+                            <h2>Theme</h2>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-moon"></i>
+                                    <span>Dark Mode</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="darkModeToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Accent Color</span>
+                                </div>
+                                <div class="color-picker">
+                                    <button class="color-btn" style="background: #4CAF50;" onclick="changeAccentColor('#4CAF50')"></button>
+                                    <button class="color-btn" style="background: #2196F3;" onclick="changeAccentColor('#2196F3')"></button>
+                                    <button class="color-btn" style="background: #FF6B00;" onclick="changeAccentColor('#FF6B00')"></button>
+                                    <button class="color-btn" style="background: #9C27B0;" onclick="changeAccentColor('#9C27B0')"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Other Settings -->
+                        <div class="settings-section">
+                            <h2>Other</h2>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-language"></i>
+                                    <span>Language</span>
+                                </div>
+                                <select class="language-select" onchange="changeLanguage(this.value)">
+                                    <option value="en">English</option>
+                                    <option value="ms">Bahasa Malaysia</option>
+                                    <option value="zh">中文</option>
+                                    <option value="ta">தமிழ்</option>
+                                </select>
+                            </div>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>About</span>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="settings-item">
+                                <div class="settings-info">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>Help & Support</span>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overlay for sidebar -->
+                    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+                    <!-- Right Sidebar -->
+                    <div class="sidebar">
+                        <div class="sidebar-header">
+                            <h2>Menu</h2>
+                            <button class="close-btn" onclick="toggleSidebar()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar-icons">
+                            <button class="sidebar-btn" onclick="window.location.href='profile.html'">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='notifications.html'">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='calendar.html'">
+                                <i class="fas fa-calendar"></i>
+                                <span>Calendar</span>
+                            </button>
+                            <button class="sidebar-btn" onclick="window.location.href='leaderboard.html'">
+                                <i class="fas fa-trophy"></i>
+                                <span>Leaderboard</span>
+                            </button>
+                            <button class="sidebar-btn">
+                                <i class="fas fa-store"></i>
+                                <span>Store</span>
+                            </button>
+                        </div>
+                        <button class="sidebar-btn settings-btn active">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-home-indicator"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        // Load saved settings
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load font size
+            const savedFontSize = localStorage.getItem('fontSize') || '16';
+            document.documentElement.style.fontSize = savedFontSize + 'px';
+
+            // Load notifications setting
+            const notificationsEnabled = localStorage.getItem('notifications') !== 'false';
+            document.getElementById('notificationsToggle').checked = notificationsEnabled;
+
+            // Load sound setting
+            const soundEnabled = localStorage.getItem('sound') !== 'false';
+            document.getElementById('soundToggle').checked = soundEnabled;
+
+            // Load dark mode setting
+            const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
+            document.getElementById('darkModeToggle').checked = darkModeEnabled;
+            if (darkModeEnabled) {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Load accent color
+            const savedAccentColor = localStorage.getItem('accentColor') || '#4CAF50';
+            document.documentElement.style.setProperty('--accent-color', savedAccentColor);
+
+            // Load language
+            const savedLanguage = localStorage.getItem('language') || 'en';
+            document.querySelector('.language-select').value = savedLanguage;
+        });
+
+        function changeFontSize(action) {
+            const currentSize = parseInt(getComputedStyle(document.documentElement).fontSize);
+            const newSize = action === 'increase' ? currentSize + 2 : currentSize - 2;
+            
+            if (newSize >= 12 && newSize <= 24) {
+                document.documentElement.style.fontSize = newSize + 'px';
+                localStorage.setItem('fontSize', newSize.toString());
+            }
+        }
+
+        function changeAccentColor(color) {
+            document.documentElement.style.setProperty('--accent-color', color);
+            localStorage.setItem('accentColor', color);
+        }
+
+        function changeLanguage(lang) {
+            localStorage.setItem('language', lang);
+            // Here you would typically reload the page with new language
+            // For demo, we'll just show an alert
+            alert('Language changed to: ' + lang);
+        }
+
+        // Toggle handlers
+        document.getElementById('notificationsToggle').addEventListener('change', function(e) {
+            localStorage.setItem('notifications', e.target.checked);
+        });
+
+        document.getElementById('soundToggle').addEventListener('change', function(e) {
+            localStorage.setItem('sound', e.target.checked);
+        });
+
+        document.getElementById('darkModeToggle').addEventListener('change', function(e) {
+            localStorage.setItem('darkMode', e.target.checked);
+            document.body.classList.toggle('dark-mode', e.target.checked);
+        });
+    </script>
+</body>
+</html> 
