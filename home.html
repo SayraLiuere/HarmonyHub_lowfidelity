@@ -88,14 +88,14 @@
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                                 <div class="chapter-content">
-                                    <div class="subtopic locked">
+                                    <div class="subtopic" onclick="window.location.href='test.html?chapter=2'">
                                         <div class="subtopic-info">
                                             <h4>Subtopic 1: Respecting Differences</h4>
-                                            <p>Coming soon</p>
+                                            <p>Learn about Chinese, Indian, and Malay ethical principles</p>
                                         </div>
                                         <div class="subtopic-status">
-                                            <span class="status-badge locked">Locked</span>
-                                            <i class="fas fa-lock"></i>
+                                            <span class="status-badge">Test Available</span>
+                                            <i class="fas fa-chevron-right"></i>
                                         </div>
                                     </div>
                                     <div class="subtopic locked">
@@ -144,33 +144,25 @@
                         </div>
                     </div>
 
-                    <!-- Right Sidebar -->
-                    <div class="sidebar">
-                        <div class="sidebar-icons">
-                            <button class="sidebar-btn" onclick="window.location.href='profile.html'">
-                                <i class="fas fa-user"></i>
-                                <span>Profile</span>
-                            </button>
-                            <button class="sidebar-btn" onclick="window.location.href='notifications.html'">
-                                <i class="fas fa-bell"></i>
-                                <span>Notifications</span>
-                            </button>
-                            <button class="sidebar-btn" onclick="window.location.href='calendar.html'">
-                                <i class="fas fa-calendar"></i>
-                                <span>Calendar</span>
-                            </button>
-                            <button class="sidebar-btn" onclick="window.location.href='leaderboard.html'">
-                                <i class="fas fa-trophy"></i>
-                                <span>Leaderboard</span>
-                            </button>
-                            <button class="sidebar-btn" onclick="window.location.href='store.html'">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>Store</span>
-                            </button>
-                        </div>
-                        <button class="sidebar-btn settings-btn" onclick="window.location.href='settings.html'">
+                    <!-- Bottom Navigation Bar (formerly sidebar) -->
+                    <div class="bottom-nav">
+                        <button class="nav-btn" onclick="window.location.href='profile.html'">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <button class="nav-btn" onclick="window.location.href='notifications.html'">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <button class="nav-btn" onclick="window.location.href='calendar.html'">
+                            <i class="fas fa-calendar"></i>
+                        </button>
+                        <button class="nav-btn" onclick="window.location.href='leaderboard.html'">
+                            <i class="fas fa-trophy"></i>
+                        </button>
+                        <button class="nav-btn" onclick="window.location.href='store.html'">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <button class="nav-btn" onclick="window.location.href='settings.html'">
                             <i class="fas fa-cog"></i>
-                            <span>Settings</span>
                         </button>
                     </div>
                 </div>

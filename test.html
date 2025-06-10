@@ -19,7 +19,7 @@
                         <button class="back-btn" onclick="window.location.href='home.html'">
                             <i class="fas fa-arrow-left"></i>
                         </button>
-                        <h1>Chapter 1: Understanding Diversity</h1>
+                        <h1 id="chapterTitle">Loading...</h1>
                         <div class="nav-buttons">
                             <button class="menu-btn" onclick="toggleSidebar()">
                                 <i class="fas fa-bars"></i>
@@ -37,7 +37,8 @@
                             <!-- Questions will be inserted here by JavaScript -->
                         </div>
 
-                        <div class="answer-buttons">
+                        <!-- True/False Buttons (for Chapter 1) -->
+                        <div class="answer-buttons" id="trueFalseButtons" style="display: none;">
                             <button class="answer-btn true-btn" onclick="checkAnswer(true)">
                                 <i class="fas fa-check"></i>
                                 True
@@ -46,6 +47,11 @@
                                 <i class="fas fa-times"></i>
                                 False
                             </button>
+                        </div>
+
+                        <!-- Multiple Choice Options (for Chapter 2) -->
+                        <div class="options-container" id="multipleChoiceOptions" style="display: none;">
+                            <!-- Options will be inserted here by JavaScript -->
                         </div>
 
                         <!-- Results Modal -->
@@ -121,8 +127,8 @@
     </div>
 
     <script>
-        // Test questions
-        const questions = [
+        // Chapter 1 questions (True/False)
+        const chapter1Questions = [
             {
                 question: "Malaysia is home to three main ethnic groups: Malays, Chinese, and Indians.",
                 answer: true
@@ -145,28 +151,102 @@
             }
         ];
 
+        // Chapter 2 questions (Multiple Choice)
+        const chapter2Questions = [
+            // Chinese Ethics
+            {
+                question: "In Chinese ethics, 'Ren' (仁) emphasizes the importance of:",
+                options: ["Wealth accumulation", "Humaneness and benevolence", "Military strength", "Individual success"],
+                answer: 1,
+                explanation: "Ren (仁) is a fundamental Confucian virtue that emphasizes humaneness, benevolence, and kindness towards others."
+            },
+            {
+                question: "Which of these is a key principle in Chinese family ethics?",
+                options: ["Individual freedom", "Filial piety (Xiao)", "Personal ambition", "Social independence"],
+                answer: 1,
+                explanation: "Filial piety (Xiao) is a core value in Chinese ethics, emphasizing respect and care for one's parents and ancestors."
+            },
+            // Indian Ethics
+            {
+                question: "What is the concept of 'Dharma' in Indian ethics primarily about?",
+                options: ["Religious rituals", "Moral duty and righteousness", "Material wealth", "Social status"],
+                answer: 1,
+                explanation: "Dharma refers to one's moral duty and righteous conduct in accordance with universal laws."
+            },
+            {
+                question: "Which principle in Indian ethics emphasizes non-violence and respect for all living beings?",
+                options: ["Karma", "Ahimsa", "Moksha", "Artha"],
+                answer: 1,
+                explanation: "Ahimsa is the principle of non-violence and respect for all living beings, central to Indian ethical thought."
+            },
+            // Malay Ethics
+            {
+                question: "What is 'Budi Pekerti' in Malay ethics?",
+                options: ["Financial success", "Good character and moral values", "Physical strength", "Political power"],
+                answer: 1,
+                explanation: "Budi Pekerti refers to good character, moral values, and proper conduct in Malay culture."
+            },
+            {
+                question: "Which value is central to Malay community ethics?",
+                options: ["Individual achievement", "Gotong-royong (mutual cooperation)", "Competition", "Personal gain"],
+                answer: 1,
+                explanation: "Gotong-royong emphasizes community cooperation and mutual assistance, a key value in Malay ethics."
+            }
+        ];
+
+        let currentChapter = 1;
         let currentQuestion = 0;
         let correctAnswers = 0;
-        const XP_PER_CORRECT = 100; // XP gained per correct answer
+        const XP_PER_CORRECT = 100;
 
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('active');
-            document.querySelector('.sidebar-overlay').classList.toggle('active');
-            document.body.classList.toggle('sidebar-open');
+        // Get chapter from URL parameter
+        function getChapterFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('chapter')) || 1;
+        }
+
+        function initializeTest() {
+            currentChapter = getChapterFromUrl();
+            document.getElementById('chapterTitle').textContent = 
+                currentChapter === 1 ? 'Chapter 1: Understanding Diversity' : 'Chapter 2: Building Harmony - Subtopic 1: Respecting Differences';
+            
+            // Show appropriate answer buttons
+            document.getElementById('trueFalseButtons').style.display = currentChapter === 1 ? 'flex' : 'none';
+            document.getElementById('multipleChoiceOptions').style.display = currentChapter === 2 ? 'block' : 'none';
+            
+            showQuestion();
         }
 
         function showQuestion() {
             const questionContainer = document.getElementById('questionContainer');
             const progress = document.getElementById('testProgress');
+            const questions = currentChapter === 1 ? chapter1Questions : chapter2Questions;
             
             if (currentQuestion < questions.length) {
                 const question = questions[currentQuestion];
-                questionContainer.innerHTML = `
-                    <div class="question">
-                        <h2>Question ${currentQuestion + 1} of ${questions.length}</h2>
-                        <p>${question.question}</p>
-                    </div>
-                `;
+                if (currentChapter === 1) {
+                    // True/False format for Chapter 1
+                    questionContainer.innerHTML = `
+                        <div class="question">
+                            <h2>Question ${currentQuestion + 1} of ${questions.length}</h2>
+                            <p>${question.question}</p>
+                        </div>
+                    `;
+                } else {
+                    // Multiple choice format for Chapter 2
+                    questionContainer.innerHTML = `
+                        <div class="question">
+                            <h2>Question ${currentQuestion + 1} of ${questions.length}</h2>
+                            <p>${question.question}</p>
+                        </div>
+                    `;
+                    const optionsContainer = document.getElementById('multipleChoiceOptions');
+                    optionsContainer.innerHTML = question.options.map((option, index) => `
+                        <button class="option-btn" onclick="checkMCAnswer(${index})">
+                            ${option}
+                        </button>
+                    `).join('');
+                }
                 progress.style.width = `${((currentQuestion) / questions.length) * 100}%`;
             } else {
                 showResults();
@@ -174,10 +254,10 @@
         }
 
         function checkAnswer(userAnswer) {
+            const questions = currentChapter === 1 ? chapter1Questions : chapter2Questions;
             const question = questions[currentQuestion];
             const buttons = document.querySelectorAll('.answer-btn');
             
-            // Disable buttons during feedback
             buttons.forEach(btn => btn.disabled = true);
             
             if (userAnswer === question.answer) {
@@ -188,7 +268,6 @@
                 buttons[question.answer ? 0 : 1].classList.add('correct');
             }
 
-            // Move to next question after a short delay
             setTimeout(() => {
                 buttons.forEach(btn => {
                     btn.disabled = false;
@@ -197,6 +276,37 @@
                 currentQuestion++;
                 showQuestion();
             }, 1000);
+        }
+
+        function checkMCAnswer(selectedIndex) {
+            const questions = currentChapter === 1 ? chapter1Questions : chapter2Questions;
+            const question = questions[currentQuestion];
+            const buttons = document.querySelectorAll('.option-btn');
+            
+            buttons.forEach(btn => btn.disabled = true);
+            
+            if (selectedIndex === question.answer) {
+                correctAnswers++;
+                buttons[selectedIndex].classList.add('correct');
+            } else {
+                buttons[selectedIndex].classList.add('incorrect');
+                buttons[question.answer].classList.add('correct');
+            }
+
+            // Show explanation for Chapter 2 questions
+            const explanationDiv = document.createElement('div');
+            explanationDiv.className = 'explanation';
+            explanationDiv.innerHTML = `<p>${question.explanation}</p>`;
+            document.querySelector('.question').appendChild(explanationDiv);
+
+            setTimeout(() => {
+                buttons.forEach(btn => {
+                    btn.disabled = false;
+                    btn.classList.remove('correct', 'incorrect');
+                });
+                currentQuestion++;
+                showQuestion();
+            }, 2000);
         }
 
         function showResults() {
@@ -241,8 +351,124 @@
             window.location.href = 'home.html';
         }
 
-        // Initialize the test
-        document.addEventListener('DOMContentLoaded', showQuestion);
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        // Initialize the test when the page loads
+        document.addEventListener('DOMContentLoaded', initializeTest);
     </script>
+
+    <style>
+        /* ... existing styles ... */
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px auto;
+            max-width: 600px;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .option-btn {
+            padding: 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background-color: white;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .option-btn::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+            border-color: #4CAF50;
+        }
+
+        .option-btn:hover::before {
+            border-color: #4CAF50;
+        }
+
+        .option-btn.correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-color: #4CAF50;
+        }
+
+        .option-btn.correct::before {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+            box-shadow: inset 0 0 0 4px white;
+        }
+
+        .option-btn.incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border-color: #f44336;
+        }
+
+        .option-btn.incorrect::before {
+            background-color: #f44336;
+            border-color: #f44336;
+            box-shadow: inset 0 0 0 4px white;
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+            opacity: 0.8;
+        }
+
+        .option-btn:disabled:hover {
+            transform: none;
+            border-color: #e0e0e0;
+        }
+
+        .explanation {
+            margin: 20px auto;
+            padding: 16px 20px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            font-style: italic;
+            color: #666;
+            border-left: 4px solid #4CAF50;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .question {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        .question p {
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+    </style>
 </body>
 </html> 
