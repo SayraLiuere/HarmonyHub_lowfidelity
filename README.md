@@ -14,3 +14,7 @@ added store
 
 1.3
 users now can change their name, age, nationality and bio.
+
+1.4
+unlocked chapter 2
+added a few colors
