@@ -1,10 +1,21 @@
 /* Profile Page Specific Styles */
+:root {
+    --primary-teal: #00BCD4;      /* Main teal color */
+    --primary-light: #B2EBF2;     /* Light teal for backgrounds */
+    --primary-dark: #0097A7;      /* Dark teal for emphasis */
+    --secondary-blue: #4DD0E1;    /* Soft teal as secondary */
+    --secondary-light: #E0F7FA;   /* Very light teal for subtle backgrounds */
+    --border-color: #80DEEA;      /* Light teal for borders */
+    --shadow-color: rgba(0, 188, 212, 0.08);  /* Teal-tinted shadow */
+}
+
 .profile-page {
     padding: 0;
     display: flex;
     flex-direction: column;
     height: 100%;
     position: relative;
+    background: var(--secondary-light);
 }
 
 /* Navigation Bar */
@@ -13,15 +24,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 25px 20px 15px;
-    border-bottom: 2px solid #000;
-    background: #fff;
+    border-bottom: 2px solid var(--border-color);
+    background: linear-gradient(to bottom, #fff, var(--secondary-light));
     margin-top: 10px;
+    box-shadow: 0 2px 10px var(--shadow-color);
 }
 
 .nav-bar h1 {
     font-size: 20px;
     font-weight: bold;
     margin: 0;
+    color: var(--primary-dark);
 }
 
 .back-btn, .menu-btn, .edit-btn {
@@ -34,20 +47,24 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
+    color: var(--primary-teal);
 }
 
 .back-btn i, .menu-btn i, .edit-btn i {
     font-size: 20px;
-    color: #000;
+    color: var(--primary-teal);
 }
 
 .back-btn:hover, .menu-btn:hover, .edit-btn:hover {
-    background-color: #f0f0f0;
+    background-color: var(--secondary-light);
+    transform: scale(1.1);
+    color: var(--primary-dark);
 }
 
 .edit-btn.editing {
-    background-color: #4CAF50;
+    background-color: var(--primary-teal);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .edit-btn.editing i {
@@ -59,7 +76,8 @@
     flex: 1;
     padding: 20px;
     overflow-y: auto;
-    padding-bottom: 100px; /* Space for bottom navigation */
+    padding-bottom: 100px;
+    background: #fff;
 }
 
 /* Profile Header */
@@ -67,23 +85,32 @@
     display: flex;
     gap: 20px;
     margin-bottom: 30px;
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
 .profile-pic {
     width: 100px;
     height: 100px;
-    background-color: #f0f0f0;
-    border: 2px solid #000;
+    background-color: var(--secondary-light);
+    border: 2px solid var(--primary-teal);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    border-color: var(--primary-dark);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .profile-pic i {
     font-size: 40px;
-    color: #000;
+    color: var(--primary-teal);
 }
 
 .profile-info {
@@ -98,6 +125,7 @@
     font-size: 24px;
     font-weight: bold;
     margin: 0;
+    color: var(--primary-dark);
 }
 
 .info-details {
@@ -114,50 +142,63 @@
 
 .info-item i {
     font-size: 18px;
-    color: #000;
+    color: var(--primary-teal);
 }
 
 .info-container {
     font-size: 16px;
+    color: var(--primary-dark);
 }
 
 /* Bio Section */
 .bio-section {
     margin-bottom: 30px;
+    animation: slideIn 0.5s ease-out forwards;
 }
 
 .bio-section h3 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: var(--primary-dark);
 }
 
 .bio-container {
     padding: 15px;
-    border: 2px solid #000;
-    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
     background: #fff;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.bio-container:hover {
+    border-color: var(--primary-teal);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .bio-container p {
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
+    color: var(--primary-dark);
 }
 
 /* Edit Inputs */
 .edit-input {
     width: 100%;
     padding: 8px;
-    border: 2px solid #000;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 16px;
     margin-top: 5px;
+    transition: all 0.3s ease;
 }
 
 .edit-input:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: var(--primary-teal);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 /* Edit Buttons */
@@ -170,30 +211,35 @@
 .save-btn, .cancel-btn {
     flex: 1;
     padding: 12px;
-    border: 2px solid #000;
+    border: 2px solid var(--primary-teal);
     border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .save-btn {
-    background-color: #4CAF50;
+    background-color: var(--primary-teal);
     color: #fff;
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .save-btn:hover {
-    background-color: #45a049;
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .cancel-btn {
     background-color: #fff;
-    color: #000;
+    color: var(--primary-teal);
 }
 
 .cancel-btn:hover {
-    background-color: #f0f0f0;
+    background-color: var(--secondary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 /* Stats Section */
@@ -201,9 +247,17 @@
     display: flex;
     justify-content: space-around;
     padding: 20px;
-    border: 2px solid #000;
-    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
     background: #fff;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    animation: fadeIn 0.5s ease-out forwards;
+    transition: all 0.3s ease;
+}
+
+.stats-section:hover {
+    border-color: var(--primary-teal);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .stat-item {
@@ -214,12 +268,12 @@
     display: block;
     font-size: 24px;
     font-weight: bold;
-    color: #4CAF50;
+    color: var(--primary-teal);
 }
 
 .stat-label {
     font-size: 14px;
-    color: #666;
+    color: var(--primary-dark);
 }
 
 /* Bottom Navigation Bar */
@@ -230,13 +284,13 @@
     right: 0;
     height: 80px;
     background: #fff;
-    border-top: 3px solid #000;
+    border-top: 2px solid var(--border-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 0 20px;
     z-index: 1000;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 10px var(--shadow-color);
 }
 
 .nav-btn {
@@ -249,24 +303,26 @@
     align-items: center;
     justify-content: center;
     border-radius: 16px;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     position: relative;
 }
 
 .nav-btn i {
     font-size: 26px;
-    color: #000;
-    transition: all 0.2s ease;
+    color: var(--primary-teal);
+    transition: all 0.3s ease;
 }
 
 .nav-btn:hover {
-    background-color: #f0f0f0;
+    background-color: var(--secondary-light);
     transform: translateY(-2px);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .nav-btn.active {
-    background-color: #4CAF50;
+    background-color: var(--primary-teal);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .nav-btn.active i {
@@ -281,8 +337,158 @@
     transform: translateX(-50%);
     width: 4px;
     height: 4px;
-    background-color: #4CAF50;
+    background-color: var(--primary-teal);
     border-radius: 50%;
+}
+
+/* Dark Mode Styles */
+.dark-mode .profile-page {
+    background: var(--bg-color);
+}
+
+.dark-mode .nav-bar,
+.dark-mode .profile-content,
+.dark-mode .bottom-nav {
+    background: var(--item-bg);
+    border-color: var(--border-color);
+}
+
+.dark-mode .nav-bar h1,
+.dark-mode .name-container h2,
+.dark-mode .bio-section h3,
+.dark-mode .info-container,
+.dark-mode .bio-container p,
+.dark-mode .stat-label {
+    color: var(--text-color);
+}
+
+.dark-mode .profile-pic {
+    background-color: var(--item-bg);
+    border-color: var(--border-color);
+}
+
+.dark-mode .bio-container,
+.dark-mode .stats-section {
+    background: var(--item-bg);
+    border-color: var(--border-color);
+}
+
+.dark-mode .bio-container:hover,
+.dark-mode .stats-section:hover {
+    border-color: var(--primary-teal);
+}
+
+.dark-mode .edit-input {
+    background: var(--item-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.dark-mode .edit-input:focus {
+    border-color: var(--primary-teal);
+}
+
+.dark-mode .cancel-btn {
+    background: var(--item-bg);
+    color: var(--text-color);
+}
+
+.dark-mode .cancel-btn:hover {
+    background: var(--hover-bg);
+}
+
+.dark-mode .nav-btn:hover {
+    background: var(--hover-bg);
+}
+
+.dark-mode .nav-btn.active {
+    background: var(--primary-teal);
+}
+
+/* Scrollbar Styles */
+.profile-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.profile-content::-webkit-scrollbar-track {
+    background: var(--secondary-light);
+    border-radius: 4px;
+}
+
+.profile-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--primary-teal), var(--secondary-blue));
+    border-radius: 4px;
+    border: 2px solid var(--secondary-light);
+}
+
+.profile-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--primary-dark), var(--primary-teal));
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 360px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-pic i {
+        font-size: 32px;
+    }
+
+    .name-container h2 {
+        font-size: 20px;
+    }
+
+    .info-details {
+        align-items: center;
+    }
+
+    .bio-section h3 {
+        font-size: 16px;
+    }
+
+    .bio-container p {
+        font-size: 14px;
+    }
+
+    .stats-section {
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .nav-btn i {
+        font-size: 22px;
+    }
 }
 
 /* Remove old sidebar styles */

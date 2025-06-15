@@ -1,40 +1,96 @@
-/* Calendar Page Specific Styles */
+/* Calendar Page Layout */
+:root {
+    --primary-teal: #00BCD4;      /* Main teal color */
+    --primary-light: #B2EBF2;     /* Light teal for backgrounds */
+    --primary-dark: #0097A7;      /* Dark teal for emphasis */
+    --secondary-blue: #4DD0E1;    /* Soft teal as secondary */
+    --secondary-light: #E0F7FA;   /* Very light teal for subtle backgrounds */
+    --border-color: #80DEEA;      /* Light teal for borders */
+    --shadow-color: rgba(0, 188, 212, 0.08);  /* Teal-tinted shadow */
+}
+
 .calendar-page {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    background: url('Background.png') no-repeat center center;
+    background-size: 150% auto;
+    min-height: 100vh;
     position: relative;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.calendar-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.65);
+    z-index: 0;
+}
+
+.dark-mode .calendar-page::before {
+    background: rgba(0, 0, 0, 0.65);
 }
 
 /* Navigation Bar */
 .nav-bar {
+    background: linear-gradient(to bottom, #fff, var(--secondary-light));
+    padding: 25px 20px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-top: 10px;
+    box-shadow: 0 2px 10px var(--shadow-color);
 }
 
 .nav-bar h1 {
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 600;
+    color: var(--primary-dark);
     margin: 0;
 }
 
-.back-btn, .menu-btn {
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-btn {
     background: none;
     border: none;
-    font-size: 20px;
+    padding: 8px;
+    color: var(--primary-teal);
     cursor: pointer;
-    padding: 5px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background: var(--secondary-light);
+    transform: scale(1.1);
+    color: var(--primary-dark);
 }
 
 /* Streak Info */
 .streak-info {
+    background: linear-gradient(135deg, var(--primary-teal), var(--secondary-blue));
+    margin: 20px;
     padding: 20px;
-    border-bottom: 2px solid #000;
-    background: #fff;
+    border-radius: 16px;
+    color: white;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    position: relative;
+    z-index: 1;
 }
 
 .streak-count {
@@ -45,145 +101,182 @@
 }
 
 .streak-count i {
-    color: #FF6B00;
     font-size: 24px;
+    color: #FFD700;
+    animation: flame 1.5s infinite alternate;
 }
 
 .streak-count span {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .streak-goal {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 12px;
 }
 
 .goal-progress {
     height: 8px;
-    background: #f0f0f0;
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 4px;
     overflow: hidden;
+    margin-bottom: 8px;
 }
 
 .progress-bar {
     height: 100%;
-    background: #FF6B00;
+    background: #FFD700;
     border-radius: 4px;
     transition: width 0.3s ease;
 }
 
 .streak-goal span {
     font-size: 14px;
-    color: #666;
+    opacity: 0.9;
 }
 
 /* Month Selector */
 .month-selector {
+    background: white;
+    margin: 0 20px 20px;
+    padding: 15px;
+    border-radius: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    border-bottom: 2px solid #000;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: relative;
+    z-index: 1;
 }
 
 .month-selector h2 {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-dark);
     margin: 0;
 }
 
 .month-btn {
-    background: none;
+    background: var(--secondary-light);
     border: none;
-    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-teal);
     cursor: pointer;
-    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.month-btn:hover {
+    background: var(--primary-light);
+    transform: scale(1.1);
 }
 
 /* Calendar Grid */
 .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1px;
-    padding: 5px;
-    background: #f0f0f0;
-    flex: 1;
-    overflow-y: auto;
+    background: white;
+    margin: 0 15px;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: relative;
+    z-index: 1;
 }
 
 .weekday {
     text-align: center;
-    font-weight: bold;
-    font-size: 12px;
-    padding: 5px 0;
-    background: #fff;
-    border-bottom: 1px solid #000;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-teal);
+    padding: 8px 0;
+    border-bottom: 2px solid var(--secondary-light);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
 }
 
 .calendar-day {
     aspect-ratio: 1;
-    background: #fff;
-    border: 1px solid #ddd;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--secondary-light);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
     position: relative;
-    padding: 2px;
+    padding: 4px;
     min-height: 35px;
 }
 
-.calendar-day.other-month {
-    color: #999;
-    background: #f9f9f9;
+.calendar-day:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    background: white;
+    border: 2px solid var(--primary-teal);
 }
 
 .calendar-day.today {
-    background: #f0f0f0;
-    border: 1px solid #000;
+    background: var(--primary-teal);
+    color: white;
+    font-weight: 600;
 }
 
-.day-number {
+.calendar-day.checked-in {
+    background: #E0F2F1;  /* Light teal-green */
+    color: #00897B;      /* Dark teal-green */
+    font-weight: 500;
+}
+
+.calendar-day.checked-in::after {
+    content: '✓';
+    position: absolute;
+    bottom: 4px;
     font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 2px;
+    color: #00897B;  /* Dark teal-green */
+}
+
+.calendar-day.other-month {
+    color: var(--border-color);
+    background: #F5F5F5;
 }
 
 .day-activity {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8px;
-    margin-top: 1px;
+    font-size: 12px;
+    margin-top: 4px;
 }
 
-.day-activity.completed {
-    background: #4CAF50;
-    color: #fff;
+.day-activity.completed i {
+    color: #2E7D32;
 }
 
-.day-activity.current {
-    background: #2196F3;
-    color: #fff;
-}
-
-.day-activity.streak {
-    background: #FF6B00;
-    color: #fff;
+.day-activity.current i {
+    color: var(--primary-teal);
+    animation: spin 1s linear infinite;
 }
 
 /* Activity Legend */
 .activity-legend {
+    background: white;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 16px;
     display: flex;
     justify-content: space-around;
-    padding: 15px;
-    border-top: 2px solid #000;
-    background: #fff;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: relative;
+    z-index: 1;
 }
 
 .legend-item {
@@ -193,127 +286,147 @@
 }
 
 .legend-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .legend-icon.completed {
-    background: #4CAF50;
-    color: #fff;
+    background: #E0F2F1;  /* Light teal-green */
+    color: #00897B;      /* Dark teal-green */
 }
 
 .legend-icon.current {
-    background: #2196F3;
-    color: #fff;
+    background: var(--secondary-light);
+    color: var(--primary-teal);
 }
 
 .legend-icon.streak {
-    background: #FF6B00;
-    color: #fff;
+    background: #FFF3E0;
+    color: #E65100;
 }
 
 .legend-item span {
-    font-size: 12px;
-    color: #666;
+    font-size: 14px;
+    color: var(--text-primary);
 }
 
-/* Sidebar Styles */
-.sidebar {
-    position: absolute;
-    right: -250px;
-    top: 0;
-    bottom: 0;
-    width: 250px;
-    background: #fff;
-    border-left: 2px solid #000;
-    transition: right 0.3s ease;
-    z-index: 1000;
-    height: 100%;
+/* Animations */
+@keyframes flame {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
 }
 
-.sidebar.active {
-    right: 0;
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.sidebar-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 999;
-    height: 100%;
+/* Dark Mode Styles */
+.dark-mode .calendar-page {
+    background-color: #1a1a1a;
 }
 
-.sidebar-overlay.active {
-    opacity: 1;
-    visibility: visible;
+.dark-mode .nav-bar,
+.dark-mode .month-selector,
+.dark-mode .calendar-grid,
+.dark-mode .activity-legend {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 2px solid #000;
+.dark-mode .nav-bar h1,
+.dark-mode .month-selector h2 {
+    color: white;
 }
 
-.sidebar-header h2 {
-    margin: 0;
-    font-size: 20px;
+.dark-mode .calendar-day {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
 }
 
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+.dark-mode .calendar-day:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-teal);
 }
 
-.sidebar-icons {
-    padding: 20px 0;
+.dark-mode .calendar-day.other-month {
+    background: rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.3);
 }
 
-.sidebar-btn {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 15px 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    gap: 15px;
+.dark-mode .weekday {
+    color: var(--primary-light);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
-.sidebar-btn i {
-    font-size: 20px;
-    width: 24px;
+.dark-mode .legend-item span {
+    color: white;
 }
 
-.sidebar-btn span {
-    font-size: 16px;
-    font-weight: bold;
+.dark-mode .calendar-day.checked-in {
+    background: rgba(0, 188, 212, 0.2);  /* Semi-transparent teal */
+    color: #80DEEA;                      /* Light teal */
 }
 
-.sidebar-btn:hover {
-    background: #f0f0f0;
+.dark-mode .calendar-day.checked-in::after {
+    color: #80DEEA;  /* Light teal */
 }
 
-.sidebar-btn.active {
-    background: #f0f0f0;
+.dark-mode .legend-icon.completed {
+    background: rgba(0, 188, 212, 0.2);  /* Semi-transparent teal */
+    color: #80DEEA;                      /* Light teal */
 }
 
-.settings-btn {
-    border-top: 2px solid #000;
-    margin-top: auto;
+/* Responsive Design */
+@media (max-width: 360px) {
+    .calendar-page {
+        background-size: 200% auto;
+    }
+
+    .nav-bar {
+        padding: 20px 15px 10px;
+    }
+
+    .nav-bar h1 {
+        font-size: 20px;
+    }
+
+    .streak-info,
+    .month-selector,
+    .calendar-grid,
+    .activity-legend {
+        margin: 12px;
+        padding: 12px;
+    }
+
+    .calendar-grid {
+        gap: 4px;
+    }
+
+    .calendar-day {
+        font-size: 13px;
+        min-height: 32px;
+        padding: 3px;
+    }
+
+    .weekday {
+        font-size: 12px;
+        padding: 6px 0;
+    }
+}
+
+/* Ensure content stays above overlay */
+.nav-bar,
+.streak-info,
+.month-selector,
+.calendar-grid,
+.activity-legend {
+    position: relative;
+    z-index: 1;
 } 

@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="test.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Initialize dark mode on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
+            if (darkModeEnabled) {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="phone-container">
@@ -20,11 +29,6 @@
                             <i class="fas fa-arrow-left"></i>
                         </button>
                         <h1 id="chapterTitle">Loading...</h1>
-                        <div class="nav-buttons">
-                            <button class="menu-btn" onclick="toggleSidebar()">
-                                <i class="fas fa-bars"></i>
-                            </button>
-                        </div>
                     </div>
 
                     <!-- Test Content -->
@@ -80,45 +84,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Overlay for sidebar -->
-                    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
-
-                    <!-- Right Sidebar -->
-                    <div class="sidebar">
-                        <div class="sidebar-header">
-                            <h2>Menu</h2>
-                            <button class="close-btn" onclick="toggleSidebar()">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar-icons">
-                            <button class="sidebar-btn" onclick="window.location.href='profile.html'">
-                                <i class="fas fa-user"></i>
-                                <span>Profile</span>
-                            </button>
-                            <button class="sidebar-btn" onclick="window.location.href='notifications.html'">
-                                <i class="fas fa-bell"></i>
-                                <span>Notifications</span>
-                            </button>
-                            <button class="sidebar-btn" onclick="window.location.href='calendar.html'">
-                                <i class="fas fa-calendar"></i>
-                                <span>Calendar</span>
-                            </button>
-                            <button class="sidebar-btn" onclick="window.location.href='leaderboard.html'">
-                                <i class="fas fa-trophy"></i>
-                                <span>Leaderboard</span>
-                            </button>
-                            <button class="sidebar-btn">
-                                <i class="fas fa-store"></i>
-                                <span>Store</span>
-                            </button>
-                        </div>
-                        <button class="sidebar-btn settings-btn">
-                            <i class="fas fa-cog"></i>
-                            <span>Settings</span>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -316,6 +281,7 @@
             const totalQuestionsSpan = document.getElementById('totalQuestions');
             const xpAmount = document.getElementById('xpAmount');
             
+            const questions = currentChapter === 1 ? chapter1Questions : chapter2Questions;
             const percentage = Math.round((correctAnswers / questions.length) * 100);
             const xpGained = correctAnswers * XP_PER_CORRECT;
             
@@ -337,6 +303,23 @@
             
             localStorage.setItem('userXP', newXP.toString());
             
+            // Add to recent activity
+            const activity = {
+                type: 'test',
+                chapter: currentChapter,
+                score: percentage,
+                xp: xpGained,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Get existing activities
+            const activities = JSON.parse(localStorage.getItem('recentActivities') || '[]');
+            // Add new activity at the beginning
+            activities.unshift(activity);
+            // Keep only the last 5 activities
+            const recentActivities = activities.slice(0, 5);
+            localStorage.setItem('recentActivities', JSON.stringify(recentActivities));
+            
             modal.classList.add('show');
         }
 
@@ -349,12 +332,6 @@
 
         function saveProgressAndGoHome() {
             window.location.href = 'home.html';
-        }
-
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('active');
-            document.querySelector('.sidebar-overlay').classList.toggle('active');
-            document.body.classList.toggle('sidebar-open');
         }
 
         // Initialize the test when the page loads
