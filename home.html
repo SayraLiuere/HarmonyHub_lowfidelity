@@ -26,6 +26,12 @@
                     <!-- Top Navigation Bar -->
                     <div class="nav-bar">
                         <div class="nav-left">
+                        </div>
+                        <div class="nav-center">
+                            <div class="title-section">
+                                <h1>HarmonyHub Malaysia</h1>
+                                <div class="level-badge">Lvl <span id="userLevel">1</span></div>
+                            </div>
                             <div class="stats-container">
                                 <div class="hearts-container">
                                     <i class="fas fa-heart"></i>
@@ -35,12 +41,6 @@
                                     <i class="fas fa-coins"></i>
                                     <span id="coinsCount">0</span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="nav-center">
-                            <div class="title-section">
-                                <h1>HarmonyHub Malaysia</h1>
-                                <div class="level-badge">Lvl <span id="userLevel">1</span></div>
                             </div>
                             <div class="xp-bar">
                                 <div class="xp-fill" id="xpProgress"></div>
@@ -56,13 +56,52 @@
 
                     <!-- Main Content Area -->
                     <div class="main-content">
+                        <!-- Hero Section -->
+                        <div class="hero-section">
+                            <div class="welcome-message">
+                                Welcome back! Ready to continue your learning journey?
+                            </div>
+                            <div class="quick-stats">
+                                <div class="stat-card">
+                                    <i class="fas fa-fire"></i>
+                                    <div class="stat-value">5</div>
+                                    <div class="stat-label">Day Streak</div>
+                                </div>
+                                <div class="stat-card">
+                                    <i class="fas fa-star"></i>
+                                    <div class="stat-value">2,450</div>
+                                    <div class="stat-label">Total XP</div>
+                                </div>
+                                <div class="stat-card">
+                                    <i class="fas fa-trophy"></i>
+                                    <div class="stat-value">3</div>
+                                    <div class="stat-label">Achievements</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured Chapter -->
+                        <div class="featured-chapter">
+                            <h2>Continue Learning</h2>
+                            <p>You're making great progress in Understanding Diversity. Complete the next lesson to earn bonus XP!</p>
+                            <button class="featured-btn" onclick="window.location.href='test.html'">
+                                Continue Chapter 1
+                            </button>
+                        </div>
+
                         <!-- Chapter List -->
                         <div class="chapter-list">
                             <!-- Chapter 1 -->
                             <div class="chapter-item">
                                 <div class="chapter-header" onclick="toggleChapter(this)">
-                                    <i class="fas fa-folder"></i>
+                                    <i class="fas fa-users"></i>
                                     <h3>Chapter 1: Understanding Diversity</h3>
+                                    <div class="chapter-progress">
+                                        <svg class="progress-ring" width="60" height="60">
+                                            <circle class="progress-ring-circle" cx="30" cy="30" r="45" />
+                                        </svg>
+                                        <div class="progress-text">60%</div>
+                                    </div>
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                                 <div class="chapter-content">
@@ -92,24 +131,30 @@
                             <!-- Chapter 2 -->
                             <div class="chapter-item">
                                 <div class="chapter-header" onclick="toggleChapter(this)">
-                                    <i class="fas fa-folder"></i>
+                                    <i class="fas fa-hands-helping"></i>
                                     <h3>Chapter 2: Building Harmony</h3>
+                                    <div class="chapter-progress">
+                                        <svg class="progress-ring" width="60" height="60">
+                                            <circle class="progress-ring-circle" cx="30" cy="30" r="45" />
+                                        </svg>
+                                        <div class="progress-text">0%</div>
+                                    </div>
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                                 <div class="chapter-content">
-                                    <div class="subtopic" onclick="window.location.href='test.html?chapter=2'">
+                                    <div class="subtopic locked">
                                         <div class="subtopic-info">
-                                            <h4>Subtopic 1: Respecting Differences</h4>
-                                            <p>Learn about Chinese, Indian, and Malay ethical principles</p>
+                                            <h4>Subtopic 1: Communication Across Cultures</h4>
+                                            <p>Coming soon</p>
                                         </div>
                                         <div class="subtopic-status">
-                                            <span class="status-badge">Test Available</span>
-                                            <i class="fas fa-chevron-right"></i>
+                                            <span class="status-badge locked">Locked</span>
+                                            <i class="fas fa-lock"></i>
                                         </div>
                                     </div>
                                     <div class="subtopic locked">
                                         <div class="subtopic-info">
-                                            <h4>Subtopic 2: Unity in Diversity</h4>
+                                            <h4>Subtopic 2: Respecting Differences</h4>
                                             <p>Coming soon</p>
                                         </div>
                                         <div class="subtopic-status">
@@ -123,8 +168,14 @@
                             <!-- Chapter 3 -->
                             <div class="chapter-item">
                                 <div class="chapter-header" onclick="toggleChapter(this)">
-                                    <i class="fas fa-folder"></i>
+                                    <i class="fas fa-hands"></i>
                                     <h3>Chapter 3: Taking Action</h3>
+                                    <div class="chapter-progress">
+                                        <svg class="progress-ring" width="60" height="60">
+                                            <circle class="progress-ring-circle" cx="30" cy="30" r="45" />
+                                        </svg>
+                                        <div class="progress-text">0%</div>
+                                    </div>
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                                 <div class="chapter-content">
@@ -192,18 +243,30 @@
     </div>
 
     <script>
-        function toggleChapter(element) {
-            const chapterContent = element.nextElementSibling;
-            const chevron = element.querySelector('.fa-chevron-down');
+        // Initialize progress rings
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressRings = document.querySelectorAll('.progress-ring-circle');
+            progressRings.forEach(ring => {
+                const radius = ring.r.baseVal.value;
+                const circumference = radius * 2 * Math.PI;
+                ring.style.strokeDasharray = `${circumference} ${circumference}`;
+                
+                // Set progress (example: 60% for Chapter 1)
+                const progress = ring.closest('.chapter-item').querySelector('.progress-text').textContent;
+                const offset = circumference - (parseInt(progress) / 100) * circumference;
+                ring.style.strokeDashoffset = offset;
+            });
+        });
+
+        // Toggle chapter content
+        function toggleChapter(header) {
+            const chapterItem = header.closest('.chapter-item');
+            const content = chapterItem.querySelector('.chapter-content');
+            const icon = header.querySelector('.fa-chevron-down');
             
-            // Toggle the chapter content
-            if (chapterContent.style.display === 'none') {
-                chapterContent.style.display = 'block';
-                chevron.style.transform = 'rotate(0deg)';
-            } else {
-                chapterContent.style.display = 'none';
-                chevron.style.transform = 'rotate(-90deg)';
-            }
+            chapterItem.classList.toggle('active');
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
         }
 
         // Initialize all chapters to be closed
