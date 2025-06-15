@@ -63,28 +63,28 @@
 /* Color Variables */
 :root {
     /* Primary Colors */
-    --primary-teal: #00897B;      /* Main teal color */
-    --primary-light: #B2DFDB;     /* Light teal for backgrounds */
-    --primary-dark: #00695C;      /* Dark teal for emphasis */
+    --primary-teal: #2196F3;      /* Main blue color */
+    --primary-light: #BBDEFB;     /* Light blue for backgrounds */
+    --primary-dark: #1976D2;      /* Dark blue for emphasis */
     
     /* Secondary Colors */
-    --secondary-blue: #4FC3F7;    /* Soft blue as secondary */
-    --secondary-light: #E1F5FE;   /* Very light blue for subtle backgrounds */
+    --secondary-blue: #64B5F6;    /* Soft blue as secondary */
+    --secondary-light: #E3F2FD;   /* Very light blue for subtle backgrounds */
     
     /* Accent Colors */
-    --accent-coral: #FF8A65;      /* Soft coral for accents and highlights */
-    --accent-light: #FFCCBC;      /* Light coral for hover states */
+    --accent-coral: #FF7043;      /* Soft orange for accents and highlights */
+    --accent-light: #FFCCBC;      /* Light orange for hover states */
     
     /* Neutral Colors */
     --background-light: #F5F7FA;  /* Soft off-white background */
-    --text-primary: #37474F;      /* Dark gray for main text */
-    --text-secondary: #607D8B;    /* Medium gray for secondary text */
-    --border-color: #CFD8DC;      /* Light gray for borders */
+    --text-primary: #263238;      /* Dark blue-gray for main text */
+    --text-secondary: #546E7A;    /* Medium blue-gray for secondary text */
+    --border-color: #B0BEC5;      /* Light blue-gray for borders */
     
     /* Utility Colors */
-    --shadow-color: rgba(0, 137, 123, 0.08);  /* Teal-tinted shadow */
-    --success-color: #26A69A;     /* Success state color */
-    --hover-overlay: rgba(178, 223, 219, 0.1); /* Light teal overlay for hover */
+    --shadow-color: rgba(33, 150, 243, 0.08);  /* Blue-tinted shadow */
+    --success-color: #4CAF50;     /* Success state color */
+    --hover-overlay: rgba(187, 222, 251, 0.1); /* Light blue overlay for hover */
 }
 
 /* Home Page Specific Styles */
@@ -525,7 +525,7 @@
     left: 0;
     right: 0;
     height: 80px;
-    background: #fff;
+    background: linear-gradient(to top, #fff, var(--secondary-light));
     border-top: 3px solid var(--border-color);
     display: flex;
     justify-content: space-around;
@@ -561,7 +561,13 @@
 }
 
 .nav-btn.active {
-    animation: pulse 2s infinite ease-in-out;
+    background: linear-gradient(135deg, var(--primary-teal), var(--secondary-blue));
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.nav-btn.active::after {
+    background-color: var(--primary-teal);
 }
 
 .nav-btn.active i {
