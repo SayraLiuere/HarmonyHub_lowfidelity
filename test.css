@@ -5,6 +5,11 @@
     flex-direction: column;
     height: 100%;
     position: relative;
+
+    background-image: url('1.png'); /* Adjust path accordingly */
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
 }
 
 /* Navigation Bar */
@@ -14,6 +19,9 @@
     align-items: center;
     padding: 20px;
     border-bottom: 2px solid #000;
+    background-color: #fff; /* Add white background */
+    z-index: 10; /* Optional: ensures it stays above other elements */
+    position: relative; /* Needed if using z-index or pseudo-elements */
 }
 
 .nav-bar h1 {
@@ -43,7 +51,7 @@
 
 .progress-bar {
     height: 4px;
-    background: #26a69a;
+    background: #f0f0f0;
     border-radius: 2px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -65,12 +73,17 @@
 }
 
 .question {
-    text-align: center;
+      text-align: center;
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent dark background */
+    padding: 20px;
+    border-radius: 12px;
+    display: inline-block;
+    margin: 0 auto;
 }
 
 .question h2 {
     font-size: 16px;
-    color: #666;
+    color: #000000;
     margin-bottom: 20px;
 }
 
