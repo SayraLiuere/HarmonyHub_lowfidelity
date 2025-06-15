@@ -5,6 +5,7 @@
     flex-direction: column;
     height: 100%;
     position: relative;
+    background-color: #f5ffff;
 }
 
 /* Navigation Bar */
@@ -14,7 +15,7 @@
     align-items: center;
     padding: 25px 20px 15px;
     border-bottom: 2px solid #000;
-    background: #fff;
+    background-color: #f5ffff;
     margin-top: 10px;
 }
 
@@ -59,11 +60,12 @@
     padding: 5px 10px;
     border: 2px solid #000;
     border-radius: 20px;
-    background: #fff;
+    background: #008080;;
+   
 }
 
 .coins-container i {
-    color: #FFD700;
+    color: #ffffff;
     font-size: 18px;
 }
 
@@ -296,16 +298,15 @@
     left: 0;
     right: 0;
     height: 80px;
-    background: #fff;
-    border-top: 3px solid #000;
+    background: #f3ffff;
+    border-top: 3px solid var(--border-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 0 20px;
     z-index: 1000;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 10px var(--shadow-color);
 }
-
 .nav-btn {
     width: 55px;
     height: 55px;

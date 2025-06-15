@@ -5,6 +5,7 @@
     flex-direction: column;
     height: 100%;
     position: relative;
+    background-color: #f5ffff; /* ✅ Added */
 }
 
 /* Navigation Bar */
