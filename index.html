@@ -12,29 +12,68 @@
         <div class="phone">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-                <!-- Login Form -->
-                <div class="login-container">
+                <!-- Auth Container -->
+                <div class="auth-container">
                     <div class="profile-pic">
                         <i class="fas fa-user"></i>
                     </div>
-                    <div class="login-header">
-                        <h1>Welcome Back</h1>
-                        <p>Please login to your account</p>
+                    <div class="auth-header">
+                        <h1 class="login-title">Welcome Back</h1>
+                        <h1 class="register-title" style="display: none;">Create Account</h1>
+                        <p class="login-subtitle">Please login to your account</p>
+                        <p class="register-subtitle" style="display: none;">Join us to start learning</p>
                     </div>
-                    <form id="loginForm" class="login-form">
+                    
+                    <!-- Login Form -->
+                    <form id="loginForm" class="auth-form login-form">
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="username" required>
+                            <label for="loginUsername">Username</label>
+                            <input type="text" id="loginUsername" name="username" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" required>
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" required>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="login-btn">Login</button>
+                            <button type="submit" class="auth-btn login-btn">Login</button>
                         </div>
                         <div class="form-footer">
                             <a href="#" class="forgot-password">Forgot Password?</a>
+                            <button type="button" class="switch-auth-btn" onclick="toggleAuth()">
+                                Don't have an account? Register
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Register Form -->
+                    <form id="registerForm" class="auth-form register-form" style="display: none;">
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <input type="text" id="registerName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerUsername">Username</label>
+                            <input type="text" id="registerUsername" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email</label>
+                            <input type="email" id="registerEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="auth-btn register-btn">Create Account</button>
+                        </div>
+                        <div class="form-footer">
+                            <button type="button" class="switch-auth-btn" onclick="toggleAuth()">
+                                Already have an account? Login
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -44,15 +83,66 @@
     </div>
 
     <script>
+        function toggleAuth() {
+            const loginForm = document.querySelector('.login-form');
+            const registerForm = document.querySelector('.register-form');
+            const loginTitle = document.querySelector('.login-title');
+            const registerTitle = document.querySelector('.register-title');
+            const loginSubtitle = document.querySelector('.login-subtitle');
+            const registerSubtitle = document.querySelector('.register-subtitle');
+            const profilePic = document.querySelector('.profile-pic');
+
+            if (loginForm.style.display !== 'none') {
+                // Switching to register
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'flex';
+                loginTitle.style.display = 'none';
+                registerTitle.style.display = 'block';
+                loginSubtitle.style.display = 'none';
+                registerSubtitle.style.display = 'block';
+                profilePic.style.display = 'none';
+                // Adjust container padding for register form
+                document.querySelector('.auth-container').style.padding = '30px 30px';
+            } else {
+                // Switching to login
+                loginForm.style.display = 'flex';
+                registerForm.style.display = 'none';
+                loginTitle.style.display = 'block';
+                registerTitle.style.display = 'none';
+                loginSubtitle.style.display = 'block';
+                registerSubtitle.style.display = 'none';
+                profilePic.style.display = 'flex';
+                // Restore original padding
+                document.querySelector('.auth-container').style.padding = '40px 30px';
+            }
+        }
+
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
             
             // Simple validation
             if (username && password) {
                 // Redirect to home page
                 window.location.href = 'home.html';
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const username = document.getElementById('registerUsername').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            // Simple validation
+            if (name && username && email && password && password === confirmPassword) {
+                // Redirect to home page after registration
+                window.location.href = 'home.html';
+            } else if (password !== confirmPassword) {
+                alert('Passwords do not match!');
             }
         });
     </script>

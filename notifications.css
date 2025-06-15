@@ -1,4 +1,16 @@
 /* Notifications Page Styles */
+:root {
+    --primary-teal: #00BCD4;      /* Main teal color */
+    --primary-light: #B2EBF2;     /* Light teal for backgrounds */
+    --primary-dark: #0097A7;      /* Dark teal for emphasis */
+    --secondary-blue: #4DD0E1;    /* Soft teal as secondary */
+    --secondary-light: #E0F7FA;   /* Very light teal for subtle backgrounds */
+    --border-color: #80DEEA;      /* Light teal for borders */
+    --shadow-color: rgba(0, 188, 212, 0.08);  /* Teal-tinted shadow */
+    --text-primary: #263238;      /* Dark blue-gray for main text */
+    --text-secondary: #546E7A;    /* Medium blue-gray for secondary text */
+}
+
 .notifications-page {
     padding: 0;
     display: flex;
@@ -7,7 +19,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #f8f9fa;
+    background: var(--secondary-light);
 }
 
 /* Navigation Bar */
@@ -16,34 +28,29 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: #fff;
-    border-bottom: 1px solid #e9ecef;
+    background: linear-gradient(to bottom, #fff, var(--secondary-light));
+    border-bottom: 2px solid var(--border-color);
     width: 100%;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 10px var(--shadow-color);
 }
 
-.nav-buttons {
-    display: flex;
-    gap: 12px;
-    align-items: center;
+.nav-bar h1 {
+    color: var(--primary-dark);
+    font-weight: 600;
 }
 
 .menu-btn, .back-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    font-size: 20px;
-    color: #495057;
-    border-radius: 8px;
-    transition: all 0.2s ease;
+    color: var(--primary-teal);
+    transition: all 0.3s ease;
 }
 
 .menu-btn:hover, .back-btn:hover {
-    background: #e9ecef;
-    color: #212529;
+    background: var(--secondary-light);
+    color: var(--primary-dark);
+    transform: scale(1.1);
 }
 
 /* Test Notification Button */
@@ -51,26 +58,26 @@
     padding: 16px;
     text-align: center;
     background: #fff;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 2px solid var(--border-color);
 }
 
 .test-btn {
-    background: #228be6;
+    background: var(--primary-teal);
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 12px 24px;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(34, 139, 230, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .test-btn:hover {
-    background: #1c7ed6;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px rgba(34, 139, 230, 0.15);
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 /* Notifications List */
@@ -81,6 +88,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    background: var(--secondary-light);
 }
 
 .notification-item {
@@ -89,37 +97,37 @@
     padding: 16px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: all 0.2s ease;
-    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .notification-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    border-color: #dee2e6;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border-color: var(--primary-teal);
 }
 
 .notification-item.unread {
-    background: #e7f5ff;
-    border-left: 4px solid #228be6;
+    background: var(--secondary-light);
+    border-left: 4px solid var(--primary-teal);
 }
 
 .notification-icon {
     width: 40px;
     height: 40px;
-    background: #e7f5ff;
+    background: var(--primary-light);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .notification-icon i {
     font-size: 18px;
-    color: #228be6;
+    color: var(--primary-teal);
 }
 
 .notification-content {
@@ -131,20 +139,21 @@
     font-size: 15px;
     font-weight: 600;
     margin: 0 0 4px 0;
-    color: #212529;
+    color: var(--text-primary);
 }
 
 .notification-content p {
     font-size: 14px;
     margin: 0 0 4px 0;
-    color: #495057;
+    color: var(--text-secondary);
     line-height: 1.4;
 }
 
 .notification-time {
     font-size: 12px;
-    color: #868e96;
+    color: var(--primary-dark);
     font-weight: 500;
+    opacity: 0.8;
 }
 
 /* Notification Toast */
@@ -153,11 +162,11 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%) translateY(-100px);
-    background: #228be6;
+    background: var(--primary-teal);
     color: #fff;
     padding: 16px 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(34, 139, 230, 0.2);
+    box-shadow: 0 4px 12px var(--shadow-color);
     z-index: 1000;
     transition: transform 0.3s ease;
     width: 90%;
@@ -217,7 +226,8 @@
     padding: 0;
     z-index: 101;
     transition: right 0.3s ease;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    box-shadow: -2px 0 8px var(--shadow-color);
+    border-left: 2px solid var(--border-color);
 }
 
 .sidebar.active {
@@ -229,15 +239,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #e9ecef;
-    background: #fff;
+    border-bottom: 2px solid var(--border-color);
+    background: linear-gradient(to bottom, #fff, var(--secondary-light));
 }
 
 .sidebar-header h2 {
     font-size: 18px;
     font-weight: 600;
     margin: 0;
-    color: #212529;
+    color: var(--primary-dark);
 }
 
 .close-btn {
@@ -246,14 +256,14 @@
     cursor: pointer;
     padding: 8px;
     font-size: 20px;
-    color: #495057;
+    color: var(--primary-teal);
     border-radius: 8px;
     transition: all 0.2s ease;
 }
 
 .close-btn:hover {
-    background: #e9ecef;
-    color: #212529;
+    background: var(--secondary-light);
+    color: var(--primary-dark);
 }
 
 .sidebar-icons {
@@ -269,7 +279,7 @@
     gap: 12px;
     padding: 12px 20px;
     width: 100%;
-    color: #495057;
+    color: var(--text-primary);
     text-align: left;
     font-size: 15px;
     font-weight: 500;
@@ -283,25 +293,25 @@
     font-size: 18px;
     width: 24px;
     text-align: center;
-    color: #228be6;
+    color: var(--primary-teal);
 }
 
 .sidebar-btn.active {
-    background: #e7f5ff;
-    color: #228be6;
+    background: var(--secondary-light);
+    color: var(--primary-teal);
 }
 
 .sidebar-btn.active i {
-    color: #228be6;
+    color: var(--primary-teal);
 }
 
 .sidebar-btn:hover {
-    background: #f8f9fa;
+    background: var(--secondary-light);
 }
 
 .settings-btn {
     margin-top: auto;
-    border-top: 1px solid #e9ecef;
+    border-top: 2px solid var(--border-color);
 }
 
 /* Bottom Navigation Bar */
@@ -312,13 +322,13 @@
     right: 0;
     height: 70px;
     background: #fff;
-    border-top: 1px solid #e9ecef;
+    border-top: 2px solid var(--border-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 0 20px;
     z-index: 1000;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -2px 8px var(--shadow-color);
 }
 
 .nav-btn {
@@ -337,20 +347,20 @@
 
 .nav-btn i {
     font-size: 22px;
-    color: #495057;
+    color: var(--primary-teal);
     transition: all 0.2s ease;
 }
 
 .nav-btn:hover {
-    background: #f8f9fa;
+    background: var(--secondary-light);
 }
 
 .nav-btn.active {
-    background: #e7f5ff;
+    background: var(--primary-teal);
 }
 
 .nav-btn.active i {
-    color: #228be6;
+    color: #fff;
 }
 
 .nav-btn.active::after {
@@ -361,7 +371,7 @@
     transform: translateX(-50%);
     width: 4px;
     height: 4px;
-    background-color: #228be6;
+    background-color: var(--primary-teal);
     border-radius: 50%;
 }
 
@@ -417,4 +427,58 @@
 /* When sidebar is open, prevent body scroll */
 body.sidebar-open {
     overflow: hidden;
+}
+
+/* Dark Mode Styles */
+.dark-mode .notifications-page {
+    background: #1a1a1a;
+}
+
+.dark-mode .nav-bar {
+    background: linear-gradient(to bottom, #2d2d2d, #1a1a1a);
+    border-color: var(--primary-dark);
+}
+
+.dark-mode .notification-item {
+    background: #2d2d2d;
+    border-color: var(--primary-dark);
+}
+
+.dark-mode .notification-item.unread {
+    background: rgba(0, 188, 212, 0.1);
+}
+
+.dark-mode .notification-content h3 {
+    color: #fff;
+}
+
+.dark-mode .notification-content p {
+    color: #ccc;
+}
+
+.dark-mode .notification-time {
+    color: var(--primary-light);
+}
+
+.dark-mode .sidebar {
+    background: #2d2d2d;
+    border-color: var(--primary-dark);
+}
+
+.dark-mode .sidebar-header {
+    background: linear-gradient(to bottom, #2d2d2d, #1a1a1a);
+    border-color: var(--primary-dark);
+}
+
+.dark-mode .sidebar-btn {
+    color: #fff;
+}
+
+.dark-mode .sidebar-btn:hover {
+    background: rgba(0, 188, 212, 0.1);
+}
+
+.dark-mode .bottom-nav {
+    background: #2d2d2d;
+    border-color: var(--primary-dark);
 } 

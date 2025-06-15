@@ -117,67 +117,192 @@
         ];
 
         // Chapter 2 questions (Multiple Choice)
-        const chapter2Questions = [
-            // Chinese Ethics
-            {
-                question: "In Chinese ethics, 'Ren' (仁) emphasizes the importance of:",
-                options: ["Wealth accumulation", "Humaneness and benevolence", "Military strength", "Individual success"],
-                answer: 1,
-                explanation: "Ren (仁) is a fundamental Confucian virtue that emphasizes humaneness, benevolence, and kindness towards others."
-            },
-            {
-                question: "Which of these is a key principle in Chinese family ethics?",
-                options: ["Individual freedom", "Filial piety (Xiao)", "Personal ambition", "Social independence"],
-                answer: 1,
-                explanation: "Filial piety (Xiao) is a core value in Chinese ethics, emphasizing respect and care for one's parents and ancestors."
-            },
-            // Indian Ethics
-            {
-                question: "What is the concept of 'Dharma' in Indian ethics primarily about?",
-                options: ["Religious rituals", "Moral duty and righteousness", "Material wealth", "Social status"],
-                answer: 1,
-                explanation: "Dharma refers to one's moral duty and righteous conduct in accordance with universal laws."
-            },
-            {
-                question: "Which principle in Indian ethics emphasizes non-violence and respect for all living beings?",
-                options: ["Karma", "Ahimsa", "Moksha", "Artha"],
-                answer: 1,
-                explanation: "Ahimsa is the principle of non-violence and respect for all living beings, central to Indian ethical thought."
-            },
-            // Malay Ethics
-            {
-                question: "What is 'Budi Pekerti' in Malay ethics?",
-                options: ["Financial success", "Good character and moral values", "Physical strength", "Political power"],
-                answer: 1,
-                explanation: "Budi Pekerti refers to good character, moral values, and proper conduct in Malay culture."
-            },
-            {
-                question: "Which value is central to Malay community ethics?",
-                options: ["Individual achievement", "Gotong-royong (mutual cooperation)", "Competition", "Personal gain"],
-                answer: 1,
-                explanation: "Gotong-royong emphasizes community cooperation and mutual assistance, a key value in Malay ethics."
-            }
-        ];
+        const chapter2Questions = {
+            subtopic1: [
+                // Malaysia's Ethnic Diversity (First 5 questions)
+                {
+                    question: "Which group forms the largest ethnic population in Malaysia?",
+                    options: ["Chinese", "Indian", "Malay", "Indigenous groups"],
+                    answer: 2,
+                    explanation: "Malays are the majority ethnic group in Malaysia and are constitutionally defined as Muslim, Malay-speaking, and following Malay customs."
+                },
+                {
+                    question: "Which of the following best describes Malaysia's cultural diversity?",
+                    options: [
+                        "A monocultural society dominated by Malay culture",
+                        "A blend of Western cultures only",
+                        "A mix of Malay, Chinese, Indian, and indigenous cultures",
+                        "A combination of British and Arab influences only"
+                    ],
+                    answer: 2,
+                    explanation: "Malaysia is known for its multicultural society shaped by centuries of trade, migration, and colonial history."
+                },
+                {
+                    question: "What term refers to the indigenous people of Peninsular Malaysia?",
+                    options: ["Dayak", "Bumiputera", "Orang Asli", "Kadazan"],
+                    answer: 2,
+                    explanation: "Orang Asli refers specifically to the indigenous communities living in Peninsular Malaysia."
+                },
+                {
+                    question: "Which of the following groups is considered part of the 'Bumiputera' in Malaysia?",
+                    options: ["Chinese", "Indian", "Malay", "Both Malay and other indigenous groups"],
+                    answer: 3,
+                    explanation: "The term Bumiputera includes Malays and all indigenous groups in Sabah and Sarawak."
+                },
+                {
+                    question: "The Portuguese Settlement in Malacca is home to which ethnic minority group?",
+                    options: ["Eurasians", "Indians", "Chinese Peranakan", "Orang Asli"],
+                    answer: 0,
+                    explanation: "This community traces its roots to Portuguese colonists and local Malays, preserving a unique heritage and language."
+                }
+            ],
+            subtopic2: [
+                // Cultural Celebrations (Last 5 questions)
+                {
+                    question: "Which ethnic group in Malaysia celebrates Lunar New Year with lion dances and ang pow (red packets)?",
+                    options: ["Malay", "Indian", "Chinese", "Eurasian"],
+                    answer: 2,
+                    explanation: "The Chinese community in Malaysia celebrates Lunar New Year as their most important festival."
+                },
+                {
+                    question: "Which ethnic group in Sarawak is known for celebrating Gawai Dayak?",
+                    options: ["Iban", "Orang Asli", "Chinese", "Malay"],
+                    answer: 0,
+                    explanation: "Gawai Dayak is a major harvest festival celebrated by the Iban and Bidayuh people in Sarawak."
+                },
+                {
+                    question: "In Sabah, which indigenous group celebrates the Kaamatan Festival?",
+                    options: ["Murut", "Bajau", "Kadazan-Dusun", "Sama-Bajau"],
+                    answer: 2,
+                    explanation: "The Kaamatan Festival is held to honor the spirit of paddy (rice), showing gratitude for a good harvest."
+                },
+                {
+                    question: "Which ethnic group in Malaysia is often referred to as the 'Cowboys of Borneo'?",
+                    options: ["Iban", "Bajau", "Kadazan", "Sama-Bajau"],
+                    answer: 1,
+                    explanation: "The Bajau people are known for their horse-riding traditions and colorful costumes."
+                },
+                {
+                    question: "Which group in Malaysia speaks a creole version of Portuguese called Kristang?",
+                    options: ["Tamil", "Malay", "Eurasian", "Chinese"],
+                    answer: 2,
+                    explanation: "The Kristang community in Malacca speaks a unique Portuguese-based creole language passed down through generations."
+                }
+            ]
+        };
+
+        // Chapter 3 questions (Multiple Choice)
+        const chapter3Questions = {
+            subtopic1: [
+                // Cultural Arts & Traditions
+                {
+                    question: "Which of the following is the national dance of Malaysia?",
+                    options: ["Bharatanatyam", "Dikir Barat", "Joget", "Bhangra"],
+                    answer: 2,
+                    explanation: "Joget is Malaysia's national dance, originating from Portuguese folk dance and adapted into local culture."
+                },
+                {
+                    question: "What is the significance of Hari Raya Aidilfitri in Malaysian culture?",
+                    options: [
+                        "Celebrates the end of Ramadan",
+                        "Marks the beginning of the Lunar New Year",
+                        "Honors the victory of good over evil",
+                        "Celebrates the harvest season"
+                    ],
+                    answer: 0,
+                    explanation: "Hari Raya Aidilfitri marks the end of Ramadan, the Islamic holy month of fasting."
+                },
+                {
+                    question: "Which ethnic group in Malaysia celebrates Deepavali?",
+                    options: ["Malay", "Chinese", "Indian", "Indigenous tribes"],
+                    answer: 2,
+                    explanation: "Deepavali, also known as the Festival of Lights, is celebrated by the Indian community in Malaysia."
+                },
+                {
+                    question: "Which traditional fabric design is iconic in Malaysian culture and often worn during festivals?",
+                    options: ["Ikat", "Batik", "Songket", "Both B and C"],
+                    answer: 3,
+                    explanation: "Both Batik and Songket are iconic Malaysian fabrics, with Batik being recognized by UNESCO as a cultural heritage."
+                },
+                {
+                    question: "Which language is widely used in everyday communication among different ethnic groups in Malaysia?",
+                    options: ["Tamil", "English", "Mandarin", "Bahasa Melayu (Malay Language)"],
+                    answer: 3,
+                    explanation: "Bahasa Melayu is the national language and serves as a common language for communication among different ethnic groups."
+                }
+            ],
+            subtopic2: [
+                // Ethnic Communities & Languages
+                {
+                    question: "Which ethnic group forms the second-largest population in Malaysia?",
+                    options: ["Indian", "Chinese", "Iban", "Kadazan"],
+                    answer: 1,
+                    explanation: "The Chinese community forms the second-largest ethnic group in Malaysia after the Malays."
+                },
+                {
+                    question: "Which of the following languages is most commonly spoken by the Malaysian Chinese community?",
+                    options: ["Tamil", "English", "Hokkien, Hakka, and Cantonese", "Malay"],
+                    answer: 2,
+                    explanation: "The Malaysian Chinese community commonly speaks various Chinese dialects, with Hokkien, Hakka, and Cantonese being the most prevalent."
+                },
+                {
+                    question: "Which festival is celebrated by the Indian community in Malaysia with the lighting of oil lamps?",
+                    options: ["Thaipusam", "Deepavali", "Ponggal", "Holi"],
+                    answer: 1,
+                    explanation: "Deepavali is celebrated with the lighting of oil lamps (diyas) to symbolize the victory of light over darkness."
+                },
+                {
+                    question: "Which group celebrates the Gawai Dayak festival in Sarawak?",
+                    options: ["Orang Asli", "Iban and Bidayuh", "Chinese", "Malay"],
+                    answer: 1,
+                    explanation: "Gawai Dayak is a major harvest festival celebrated by the Iban and Bidayuh communities in Sarawak."
+                },
+                {
+                    question: "Which ethnic group in Sabah is known for its equestrian traditions and colorful attire?",
+                    options: ["Dusun", "Murut", "Bajau", "Sama-Bajau"],
+                    answer: 2,
+                    explanation: "The Bajau people of Sabah are known as the 'Cowboys of Borneo' for their horse-riding traditions and vibrant traditional costumes."
+                }
+            ]
+        };
 
         let currentChapter = 1;
+        let currentSubtopic = 1;
         let currentQuestion = 0;
         let correctAnswers = 0;
         const XP_PER_CORRECT = 100;
 
-        // Get chapter from URL parameter
-        function getChapterFromUrl() {
+        // Get chapter and subtopic from URL parameters
+        function getParametersFromUrl() {
             const urlParams = new URLSearchParams(window.location.search);
-            return parseInt(urlParams.get('chapter')) || 1;
+            return {
+                chapter: parseInt(urlParams.get('chapter')) || 1,
+                subtopic: parseInt(urlParams.get('subtopic')) || 1
+            };
         }
 
         function initializeTest() {
-            currentChapter = getChapterFromUrl();
-            document.getElementById('chapterTitle').textContent = 
-                currentChapter === 1 ? 'Chapter 1: Understanding Diversity' : 'Chapter 2: Building Harmony - Subtopic 1: Respecting Differences';
+            const params = getParametersFromUrl();
+            currentChapter = params.chapter;
+            currentSubtopic = params.subtopic;
+            
+            let title = '';
+            if (currentChapter === 1) {
+                title = 'Chapter 1: Understanding Diversity';
+            } else if (currentChapter === 2) {
+                title = currentSubtopic === 1 
+                    ? 'Chapter 2: Building Harmony - Subtopic 1: Malaysia\'s Ethnic Diversity'
+                    : 'Chapter 2: Building Harmony - Subtopic 2: Cultural Celebrations';
+            } else {
+                title = currentSubtopic === 1
+                    ? 'Chapter 3: Malaysian Cultural Heritage - Subtopic 1: Cultural Arts & Traditions'
+                    : 'Chapter 3: Malaysian Cultural Heritage - Subtopic 2: Ethnic Communities & Languages';
+            }
+            document.getElementById('chapterTitle').textContent = title;
             
             // Show appropriate answer buttons
             document.getElementById('trueFalseButtons').style.display = currentChapter === 1 ? 'flex' : 'none';
-            document.getElementById('multipleChoiceOptions').style.display = currentChapter === 2 ? 'block' : 'none';
+            document.getElementById('multipleChoiceOptions').style.display = currentChapter !== 1 ? 'block' : 'none';
             
             showQuestion();
         }
@@ -185,26 +310,26 @@
         function showQuestion() {
             const questionContainer = document.getElementById('questionContainer');
             const progress = document.getElementById('testProgress');
-            const questions = currentChapter === 1 ? chapter1Questions : chapter2Questions;
+            let questions;
+            
+            if (currentChapter === 1) {
+                questions = chapter1Questions;
+            } else if (currentChapter === 2) {
+                questions = chapter2Questions[`subtopic${currentSubtopic}`];
+            } else {
+                questions = chapter3Questions[`subtopic${currentSubtopic}`];
+            }
             
             if (currentQuestion < questions.length) {
                 const question = questions[currentQuestion];
-                if (currentChapter === 1) {
-                    // True/False format for Chapter 1
-                    questionContainer.innerHTML = `
-                        <div class="question">
-                            <h2>Question ${currentQuestion + 1} of ${questions.length}</h2>
-                            <p>${question.question}</p>
-                        </div>
-                    `;
-                } else {
-                    // Multiple choice format for Chapter 2
-                    questionContainer.innerHTML = `
-                        <div class="question">
-                            <h2>Question ${currentQuestion + 1} of ${questions.length}</h2>
-                            <p>${question.question}</p>
-                        </div>
-                    `;
+                questionContainer.innerHTML = `
+                    <div class="question">
+                        <h2>Question ${currentQuestion + 1} of ${questions.length}</h2>
+                        <p>${question.question}</p>
+                    </div>
+                `;
+                
+                if (currentChapter !== 1) {  // Show multiple choice for both Chapter 2 and 3
                     const optionsContainer = document.getElementById('multipleChoiceOptions');
                     optionsContainer.innerHTML = question.options.map((option, index) => `
                         <button class="option-btn" onclick="checkMCAnswer(${index})">
@@ -212,6 +337,7 @@
                         </button>
                     `).join('');
                 }
+                
                 progress.style.width = `${((currentQuestion) / questions.length) * 100}%`;
             } else {
                 showResults();
@@ -219,7 +345,14 @@
         }
 
         function checkAnswer(userAnswer) {
-            const questions = currentChapter === 1 ? chapter1Questions : chapter2Questions;
+            let questions;
+            if (currentChapter === 1) {
+                questions = chapter1Questions;
+            } else if (currentChapter === 2) {
+                questions = chapter2Questions[`subtopic${currentSubtopic}`];
+            } else {
+                questions = chapter3Questions[`subtopic${currentSubtopic}`];
+            }
             const question = questions[currentQuestion];
             const buttons = document.querySelectorAll('.answer-btn');
             
@@ -244,7 +377,14 @@
         }
 
         function checkMCAnswer(selectedIndex) {
-            const questions = currentChapter === 1 ? chapter1Questions : chapter2Questions;
+            let questions;
+            if (currentChapter === 1) {
+                questions = chapter1Questions;
+            } else if (currentChapter === 2) {
+                questions = chapter2Questions[`subtopic${currentSubtopic}`];
+            } else {
+                questions = chapter3Questions[`subtopic${currentSubtopic}`];
+            }
             const question = questions[currentQuestion];
             const buttons = document.querySelectorAll('.option-btn');
             
@@ -281,7 +421,14 @@
             const totalQuestionsSpan = document.getElementById('totalQuestions');
             const xpAmount = document.getElementById('xpAmount');
             
-            const questions = currentChapter === 1 ? chapter1Questions : chapter2Questions;
+            let questions;
+            if (currentChapter === 1) {
+                questions = chapter1Questions;
+            } else if (currentChapter === 2) {
+                questions = chapter2Questions[`subtopic${currentSubtopic}`];
+            } else {
+                questions = chapter3Questions[`subtopic${currentSubtopic}`];
+            }
             const percentage = Math.round((correctAnswers / questions.length) * 100);
             const xpGained = correctAnswers * XP_PER_CORRECT;
             
@@ -307,6 +454,7 @@
             const activity = {
                 type: 'test',
                 chapter: currentChapter,
+                subtopic: currentSubtopic,
                 score: percentage,
                 xp: xpGained,
                 timestamp: new Date().toISOString()
@@ -339,112 +487,12 @@
     </script>
 
     <style>
-        /* ... existing styles ... */
-
-        .options-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px auto;
-            max-width: 600px;
-            width: 100%;
-            padding: 0 10px;
-        }
-
-        .option-btn {
-            padding: 16px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            background-color: white;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 16px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            position: relative;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .option-btn::before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 50%;
-            margin-right: 12px;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .option-btn:hover {
-            background-color: #f8f9fa;
-            transform: translateX(5px);
-            border-color: #4CAF50;
-        }
-
-        .option-btn:hover::before {
-            border-color: #4CAF50;
-        }
-
-        .option-btn.correct {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            border-color: #4CAF50;
-        }
-
-        .option-btn.correct::before {
-            background-color: #4CAF50;
-            border-color: #4CAF50;
-            box-shadow: inset 0 0 0 4px white;
-        }
-
-        .option-btn.incorrect {
-            background-color: #ffebee;
-            color: #c62828;
-            border-color: #f44336;
-        }
-
-        .option-btn.incorrect::before {
-            background-color: #f44336;
-            border-color: #f44336;
-            box-shadow: inset 0 0 0 4px white;
-        }
-
-        .option-btn:disabled {
-            cursor: default;
-            opacity: 0.8;
-        }
-
-        .option-btn:disabled:hover {
-            transform: none;
-            border-color: #e0e0e0;
-        }
-
-        .explanation {
-            margin: 20px auto;
-            padding: 16px 20px;
-            background-color: #f8f9fa;
-            border-radius: 12px;
-            font-style: italic;
-            color: #666;
-            border-left: 4px solid #4CAF50;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
+        /* Remove duplicate styles since they are now in test.css */
+        .options-container,
+        .option-btn,
+        .explanation,
         .question {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-
-        .question p {
-            font-size: 20px;
-            line-height: 1.5;
-            margin-bottom: 24px;
+            /* These styles are now in test.css */
         }
     </style>
 </body>

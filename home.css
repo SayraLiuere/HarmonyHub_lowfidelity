@@ -1646,284 +1646,35 @@ html {
     color: var(--primary-teal);
 }
 
-/* Quiz styles in dark mode */
-.dark-mode .question-container {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-    color: #fff;
-}
-
-.dark-mode .question-container h3 {
-    color: #fff;
-}
-
-.dark-mode .question-container p {
-    color: #ccc;
-}
-
-.dark-mode .option-btn {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-    color: #fff;
-}
-
-.dark-mode .option-btn:hover {
-    background: rgba(0, 0, 0, 0.9);
-    border-color: var(--primary-teal);
-}
-
-.dark-mode .option-btn.correct {
-    background: rgba(46, 125, 50, 0.3);
-    color: #81c784;
-    border-color: #4caf50;
-}
-
-.dark-mode .option-btn.incorrect {
-    background: rgba(198, 40, 40, 0.3);
-    color: #ef9a9a;
-    border-color: #f44336;
-}
-
-.dark-mode .quiz-progress {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-}
-
-.dark-mode .progress-bar {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .progress-fill {
-    background: linear-gradient(to right, var(--primary-teal), var(--secondary-blue));
-}
-
-.dark-mode .quiz-nav-btn {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-    color: #fff;
-}
-
-.dark-mode .quiz-nav-btn:hover {
-    background: rgba(0, 0, 0, 0.9);
-    border-color: var(--primary-teal);
-}
-
-.dark-mode .quiz-nav-btn:disabled {
-    background: rgba(0, 0, 0, 0.5);
-    border-color: var(--border-color);
-    color: #666;
-}
-
-.dark-mode .quiz-feedback {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-    color: #fff;
-}
-
-.dark-mode .quiz-feedback.correct {
-    border-color: #4caf50;
-}
-
-.dark-mode .quiz-feedback.incorrect {
-    border-color: #f44336;
-}
-
-.dark-mode .quiz-feedback p {
-    color: #ccc;
-}
-
-.dark-mode .quiz-feedback .feedback-icon {
-    color: var(--primary-teal);
-}
-
-.dark-mode .quiz-feedback.correct .feedback-icon {
-    color: #4caf50;
-}
-
-.dark-mode .quiz-feedback.incorrect .feedback-icon {
-    color: #f44336;
-}
-
-/* True/False buttons in dark mode */
-.dark-mode .true-false-container {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-}
-
-.dark-mode .true-btn,
-.dark-mode .false-btn {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-    color: #fff;
-}
-
-.dark-mode .true-btn:hover,
-.dark-mode .false-btn:hover {
-    background: rgba(0, 0, 0, 0.9);
-    border-color: var(--primary-teal);
-}
-
-.dark-mode .true-btn.selected {
-    background: rgba(46, 125, 50, 0.3);
-    border-color: #4caf50;
-    color: #81c784;
-}
-
-.dark-mode .false-btn.selected {
-    background: rgba(198, 40, 40, 0.3);
-    border-color: #f44336;
-    color: #ef9a9a;
-}
-
-.dark-mode .true-btn.correct {
-    background: rgba(46, 125, 50, 0.3);
-    border-color: #4caf50;
-    color: #81c784;
-}
-
-.dark-mode .false-btn.correct {
-    background: rgba(46, 125, 50, 0.3);
-    border-color: #4caf50;
-    color: #81c784;
-}
-
-.dark-mode .true-btn.incorrect,
-.dark-mode .false-btn.incorrect {
-    background: rgba(198, 40, 40, 0.3);
-    border-color: #f44336;
-    color: #ef9a9a;
-}
-
-/* Quiz container and question styles in dark mode */
-.dark-mode .quiz-container {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-}
-
-.dark-mode .quiz-question {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-    color: #fff;
-}
-
-.dark-mode .quiz-question h2 {
-    color: #fff;
-}
-
-.dark-mode .quiz-question p {
-    color: #ccc;
-}
-
-.dark-mode .quiz-options {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.dark-mode .quiz-option {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-    color: #fff;
-}
-
-.dark-mode .quiz-option:hover {
-    background: rgba(0, 0, 0, 0.9);
-    border-color: var(--primary-teal);
-}
-
-.dark-mode .quiz-option.selected {
-    background: rgba(33, 150, 243, 0.3);
-    border-color: var(--primary-teal);
-    color: #fff;
-}
-
-.dark-mode .quiz-option.correct {
-    background: rgba(46, 125, 50, 0.3);
-    border-color: #4caf50;
-    color: #81c784;
-}
-
-.dark-mode .quiz-option.incorrect {
-    background: rgba(198, 40, 40, 0.3);
-    border-color: #f44336;
-    color: #ef9a9a;
-}
-
-.dark-mode .quiz-feedback {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-}
-
-.dark-mode .quiz-feedback p {
-    color: #ccc;
-}
-
-.dark-mode .quiz-feedback.correct {
-    border-color: #4caf50;
-}
-
-.dark-mode .quiz-feedback.incorrect {
-    border-color: #f44336;
-}
-
-.dark-mode .quiz-navigation {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-}
-
-.dark-mode .quiz-navigation button {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--border-color);
-    color: #fff;
-}
-
-.dark-mode .quiz-navigation button:hover {
-    background: rgba(0, 0, 0, 0.9);
-    border-color: var(--primary-teal);
-}
-
-.dark-mode .quiz-navigation button:disabled {
-    background: rgba(0, 0, 0, 0.5);
-    color: #666;
-}
-
-/* Quiz page background */
-.quiz-page {
-    background-image: url('Background.png');
-    background-size: 150% auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-}
-
-.quiz-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.65);
-    z-index: 1;
-}
-
-.dark-mode .quiz-page::before {
-    background: rgba(0, 0, 0, 0.65);
-}
-
-/* Ensure quiz content appears above the overlay */
+/* Quiz Styles */
 .quiz-container,
-.quiz-question,
-.quiz-options,
-.quiz-navigation,
-.quiz-feedback {
-    position: relative;
-    z-index: 2;
+.quiz-header,
+.quiz-progress,
+.quiz-content,
+.question,
+.options,
+.option-btn,
+.explanation,
+.quiz-footer,
+.next-btn {
+    /* These styles are now in test.css */
 }
 
-/* Responsive adjustments for background */
-@media (max-width: 360px) {
-    .quiz-page {
-        background-size: 200% auto;
+/* Dark mode styles for quiz */
+@media (prefers-color-scheme: dark) {
+    .quiz-container,
+    .option-btn,
+    .explanation {
+        /* These styles are now in test.css */
+    }
+}
+
+/* Mobile styles for quiz */
+@media (max-width: 480px) {
+    .quiz-container,
+    .options,
+    .option-btn,
+    .next-btn {
+        /* These styles are now in test.css */
     }
 } 
