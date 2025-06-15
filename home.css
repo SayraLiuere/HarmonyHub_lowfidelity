@@ -223,13 +223,13 @@
 }
 
 /* Stats Container */
-.stats-container {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    background: #fff;
-    padding: 2px;
-}
+    .stats-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        background: rgb(235,248,255,255);
+        padding: 2px;
+    }
 
 .hearts-container, .coins-container {
     display: flex;
@@ -238,7 +238,8 @@
     padding: 4px 8px;
     border: 2px solid var(--border-color);
     border-radius: 20px;
-    background: #fff;
+    background: var(--primary-teal); /* Updated to teal */
+    color: #fff; /* Ensure text/icon contrast */
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: fit-content;
@@ -430,7 +431,7 @@
     display: flex;
     align-items: center;
     padding: 15px;
-    background: #fff;
+    background: #f5ffff;
     cursor: pointer;
     gap: 15px;
     border-bottom: 2px solid var(--border-color);
@@ -448,6 +449,11 @@
 
 .chapter-item.active .chapter-header i.fa-chevron-down {
     transform: rotate(180deg);
+}
+.chapter-header h3 {
+    margin: 0;
+    font-size: 1.2rem; /* Default size */
+    transition: font-size 0.3s ease;
 }
 
 .subtopic {
@@ -525,7 +531,7 @@
     left: 0;
     right: 0;
     height: 80px;
-    background: #fff;
+    background: #eaffff;
     border-top: 3px solid var(--border-color);
     display: flex;
     justify-content: space-around;
