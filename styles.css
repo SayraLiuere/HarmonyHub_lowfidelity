@@ -168,17 +168,18 @@ body {
 
 /* Sidebar */
 .sidebar {
-    position: fixed;
-    top: 0;
+    position: absolute;
     right: -280px;
+    top: 0;
+    bottom: 0;
     width: 280px;
-    height: 100%;
     background: #fff;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
     z-index: 1000;
     display: flex;
     flex-direction: column;
+    border-left: 2px solid #000;
 }
 
 .sidebar.active {
@@ -200,7 +201,7 @@ body {
 }
 
 .sidebar-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
